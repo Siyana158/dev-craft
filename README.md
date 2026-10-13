@@ -48,6 +48,11 @@ Skills can run commands with your agent's permissions. Read `skills/*/SKILL.md` 
 </p>
 <p align="center"><sub>A different direction from the same method, <a href="examples/kora/index.html">examples/kora</a>: dark product page with a live savings simulator.</sub></p>
 
+<p align="center">
+  <img src="docs/images/thulir-desktop.png" alt="A soft light preschool landing page: rounded shapes, a drawn sprout and a friendly headline" width="720">
+</p>
+<p align="center"><sub>A third direction, <a href="examples/thulir/index.html">examples/thulir</a>: soft light, with a group finder driven by the child's age.</sub></p>
+
 ## Why
 
 A page made on autopilot is the average of every page seen before. ui-craft replaces that with a short chain where each stage leaves something you can point at, and where the result is measured in a browser instead of assumed.

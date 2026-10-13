@@ -14,6 +14,14 @@ Pick ONE direction per page, from the brief. State the choice and the reason in 
 | **Quiet luxury** | hospitality, jewellery, architecture, boutique services | Deep neutral or paper tone, a refined serif with a restrained sans, thin spacing | Wide margins, slow full-bleed imagery, small centred text, very few elements per screen | Slow fades, long durations |
 | **Raw / utilitarian** | studios, zines, activism, indie tools | Black, white, one harsh colour; system-like or condensed type | Rigid grid, visible borders, plain lists, no decoration | None or abrupt |
 
+## Worked examples in this repo
+
+| Direction | Example |
+|---|---|
+| Editorial bold | `examples/kettle-and-co` |
+| Modern product (dark) | `examples/kora` |
+| Soft light | `examples/thulir` |
+
 ## Using a direction
 
 1. Choose from the table using audience and subject, not personal habit.
