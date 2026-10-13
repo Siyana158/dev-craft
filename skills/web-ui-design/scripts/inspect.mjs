@@ -12,12 +12,14 @@ import { existsSync, mkdirSync, writeFileSync, mkdtempSync, rmSync } from 'node:
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { HEALTH_MEASURE, healthRules, keyboardTest, keyboardRules, reducedMotionTest, motionRules } from './health.mjs';
 
 const args = process.argv.slice(2);
 const target = args.find((a) => !a.startsWith('--'));
 const flag = (n, d) => { const i = args.indexOf(`--${n}`); return i > -1 ? args[i + 1] : d; };
 const outDir = resolve(flag('out', '.ui-craft/inspect'));
 const strict = args.includes('--strict');
+const quick = args.includes('--quick');
 const allow = new Set((flag('allow', '') || '').split(',').filter(Boolean));
 if (!target) { console.error('Usage: node inspect.mjs <url|file.html> [--out dir] [--allow rule,rule]'); process.exit(2); }
 if (typeof WebSocket === 'undefined') { console.error('Node 22+ is required (global WebSocket).'); process.exit(2); }
@@ -103,6 +105,16 @@ const MEASURE = `(() => {
   const outOfView = all.filter((e) => { const r = e.getBoundingClientRect(); return r.right > vw + 2 && r.width < vw * 3 && getComputedStyle(e).position !== 'fixed'; }).slice(0, 5).map((e) => e.tagName.toLowerCase() + '.' + String(e.className).slice(0, 30));
   const focusCss = [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => /focus-visible|:focus/.test(r.cssText)); } catch { return true; } });
   const reducedMotion = [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => r.media && /prefers-reduced-motion/.test(r.media.mediaText)); } catch { return true; } });
+  
+  // DOM Complexity & Performance checks
+  const domNodes = all.length;
+  let domDepth = 0;
+  const walkDepth = (el, d) => { if (d > domDepth) domDepth = d; for (const c of el.children) walkDepth(c, d + 1); };
+  walkDepth(document.documentElement, 1);
+  const heavySvgs = q('svg').filter((s) => (s.outerHTML || '').length > 50000).length;
+  const oversizedImgs = q('img').filter(visible).filter((i) => i.naturalWidth > 1200 && i.clientWidth > 0 && i.naturalWidth > i.clientWidth * 3).length;
+  const clsScore = window.__uiCraftCls || 0;
+
   return {
     vw, scrollW: document.documentElement.scrollWidth, docH: document.documentElement.scrollHeight,
     title: document.title, lang: document.documentElement.lang, desc: !!document.querySelector('meta[name=description]'),
@@ -111,6 +123,7 @@ const MEASURE = `(() => {
     outOfView, focusCss, reducedMotion, main: !!document.querySelector('main'),
     movers: q('*').filter((e) => getComputedStyle(e).transitionDuration !== '0s' || getComputedStyle(e).animationName !== 'none').length,
     fontsLoaded: [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family),
+    domNodes, domDepth, heavySvgs, oversizedImgs, clsScore,
   };
 })()`;
 
@@ -132,11 +145,16 @@ try {
     await S('Emulation.setDeviceMetricsOverride', { width: vp.w, height: vp.h, deviceScaleFactor: 1, mobile: vp.mobile });
     await S('Page.navigate', { url });
     await sleep(1800);
+    // setup CLS tracking before scrolling
+    await S('Runtime.evaluate', { expression: `window.__uiCraftCls = 0; try { const po = new PerformanceObserver((l) => { for (const e of l.getEntries()) { if (!e.hadRecentInput) window.__uiCraftCls += e.value; } }); po.observe({ type: 'layout-shift', buffered: true }); } catch {}` });
     // scroll through so IntersectionObserver reveals fire, then back to top
     await S('Runtime.evaluate', { expression: `(async()=>{document.documentElement.style.scrollBehavior='auto';const h=document.documentElement.scrollHeight;for(let y=0;y<h;y+=innerHeight*0.7){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);await new Promise(r=>setTimeout(r,900));})()`, awaitPromise: true });
     const { result } = await S('Runtime.evaluate', { expression: MEASURE, returnByValue: true });
     const m = result.value;
     if (!m) { console.error('Measurement failed at', vp.w); continue; }
+    const { result: hres } = await S('Runtime.evaluate', { expression: HEALTH_MEASURE, returnByValue: true });
+    const h = hres.value;
+    healthRules(h, rule, `${vp.w}px`);
     const shot = await S('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
     const file = join(outDir, `${vp.w}.png`); writeFileSync(file, Buffer.from(shot.data, 'base64'));
     const tag = `${vp.w}px`;
@@ -171,9 +189,20 @@ try {
       if (m.movers < 8) rule('motion', 'WARN', `only ${m.movers} elements with transitions/animations; add entrance and control feedback`, tag);
       const blank = m.docH / m.vw;
       if (blank > 14) rule('length', 'WARN', `page is ${Math.round(m.docH)}px tall; check for filler`, tag);
+      if (m.domNodes > 1500) rule('dom-nodes', 'WARN', `${m.domNodes} DOM elements (keep below 1500 for optimal rendering)`, tag);
+      if (m.domDepth > 32) rule('dom-depth', 'WARN', `DOM tree max depth is ${m.domDepth} (nesting > 32 hurts layout engine)`, tag);
+      if (m.clsScore > 0.1) rule('layout-shift', 'WARN', `cumulative layout shift ${m.clsScore.toFixed(3)} exceeds 0.1 threshold`, tag);
+      if (m.heavySvgs > 0) rule('heavy-svg', 'WARN', `${m.heavySvgs} inline <svg> larger than 50KB; consider external SVG or optimization`, tag);
+      if (m.oversizedImgs > 0) rule('oversized-images', 'WARN', `${m.oversizedImgs} images served at >3x displayed resolution`, tag);
     }
     if (vp.w === 1440) console.log(`fonts loaded: ${[...new Set(m.fontsLoaded)].join(', ') || 'none (system fonts only)'}`);
     console.log(`screenshot: ${file}`);
+    if (vp.w === 1440 && !quick) {
+      const kb = await keyboardTest(S);
+      keyboardRules(kb, h ? h.focusable : 0, rule, tag);
+      const rm = await reducedMotionTest(S, url, sleep);
+      motionRules(rm, rule, tag);
+    }
   }
   ws.close();
 } catch (e) {

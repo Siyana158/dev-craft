@@ -6,7 +6,7 @@
 npx skills add Siyana158/ui-craft-skills
 ```
 
-This copies three skills into your project's `.agents/skills/` and links them for the agents you use. Start a new agent session afterwards so the skills are listed.
+This copies four skills into your project's `.agents/skills/` and links them for the agents you use. Start a new agent session afterwards so the skills are listed.
 
 Skills run with your agent's permissions. Read `skills/*/SKILL.md` before relying on them.
 
@@ -42,4 +42,4 @@ For `web-ui-design` the agent should produce, in order: a brief card, a specific
 npx skills add Siyana158/ui-craft-skills     # re-run to update
 ```
 
-To remove, delete the three folders from `.agents/skills/` (and any symlinks your agent created).
+To remove, delete the four folders from `.agents/skills/` (and any symlinks your agent created).

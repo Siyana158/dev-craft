@@ -111,7 +111,7 @@ footer a{margin-right:18px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .hero>*,.sh>*,.calc>*{min-width:0}.term{max-width:100%}@media(max-width:900px){.logo,.btn{min-height:44px}.term pre{font-size:13px}.ver{overflow-wrap:anywhere}}
-@media(max-width:900px){.diag{overflow-x:auto}.diag svg{min-width:680px}}
+@media(max-width:900px){.diag{overflow-x:auto}.diag svg{min-width:780px}}
 </style>
 </head>
 <body>
@@ -129,9 +129,9 @@ footer a{margin-right:18px}
       <div class="act"><a class="btn" href="#cost">Estimate your cost</a><a class="btn o" href="#spec">Read the spec</a></div>
       <p class="ver" style="margin-bottom:0">v0.9.4 &middot; Apache-2.0 &middot; single static binary</p>
     </div>
-    <div class="term" role="img" aria-label="Example of writing and querying data with Stratum">
+    <div class="term" role="group" aria-label="Example of writing and querying data with Stratum">
       <div class="bar"><span>stratum shell</span><span>localhost:7070</span></div>
-<pre><span class="c">-- write: one row per event, timestamps in UTC</span>
+<pre tabindex="0"><span class="c">-- write: one row per event, timestamps in UTC</span>
 <span class="k">INSERT INTO</span> cpu (ts, host, load)
 <span class="k">VALUES</span> (<span class="s">'2026-10-13T09:00:00Z'</span>, <span class="s">'web-3'</span>, <span class="n">0.62</span>);
 
@@ -161,7 +161,7 @@ footer a{margin-right:18px}
 
   <section id="how" aria-labelledby="h-how">
     <div class="sh"><div><span class="tag">02 / DESIGN</span><h2 id="h-how">One path in, one path out.</h2></div><p>Writes go to a log, then to hourly segments. Queries read only the segments and columns they need.</p></div>
-    <div class="diag">
+    <div class="diag" tabindex="0" role="group" aria-label="Architecture diagram, scrolls sideways on small screens">
       <svg viewBox="0 0 960 250" role="img" aria-label="Diagram: clients write to the write-ahead log, which flushes into hourly columnar segments; queries read segments, and snapshots copy segments to object storage.">
         <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#101418" stroke="none"/></marker></defs>
         <rect class="b" x="10" y="95" width="150" height="60"/><text x="85" y="130" text-anchor="middle">writers</text>

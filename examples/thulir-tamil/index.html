@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>தளிர் கற்றல் மையம் - கோயம்புத்தூரில் விளையாட்டு வழிப் பள்ளி</title>
+<meta name="description" content="2 முதல் 6 வயது வரை உள்ள குழந்தைகளுக்கான சிறிய, விளையாட்டு வழிப் பள்ளி. தமிழும் ஆங்கிலமும். ஒவ்வொரு குழுவிலும் பன்னிரண்டு குழந்தைகள்.">
+<meta property="og:title" content="தளிர் கற்றல் மையம் - சிறு குழந்தைகள், ஆழமான வேர்கள்">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%231f5c4d'/%3E%3Cpath d='M16 25V14M16 14c0-5 3-7 8-7 0 5-3 7-8 7zM16 18c0-4-2-6-7-6 0 4 2 6 7 6z' fill='none' stroke='%23f6e3a1' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#f1f7f4; --white:#fff; --ink:#17342e; --muted:#4b625a; --deep:#1f5c4d; --on-deep:#fff;
+  --sage:#d3e8dc; --butter:#f7e6a8; --sky:#d4e6f5; --peach:#f9dccb;
+  --font:"Noto Sans Tamil","Latha","Nirmala UI",system-ui,sans-serif;
+  --ease:cubic-bezier(.32,.72,0,1); --r:32px; --margin:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font:400 18px/1.8 var(--font);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;letter-spacing:inherit}
+:focus-visible{outline:3px solid var(--deep);outline-offset:3px;border-radius:12px}
+h1,h2,h3{font-weight:700;letter-spacing:0;text-wrap:balance;line-height:1.38}
+.skip{position:absolute;left:-999px;top:8px;background:var(--deep);color:#fff;padding:12px 18px;border-radius:12px;z-index:100}
+.skip:focus{left:8px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 var(--margin)}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:20px var(--margin);max-width:1160px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:24px;min-height:44px}
+.logo svg{width:38px;height:38px}
+nav{display:flex;align-items:center;gap:6px}
+nav a.l{padding:10px 16px;border-radius:999px;font-weight:500;color:var(--muted);transition:background .25s var(--ease),color .25s;min-height:44px;display:inline-flex;align-items:center}
+nav a.l:hover{background:var(--sage);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:var(--deep);color:var(--on-deep);font-weight:600;font-size:18px;padding:12px 30px;border-radius:999px;border:0;cursor:pointer;transition:transform .3s var(--ease),background .3s var(--ease)}
+.btn:hover{transform:translateY(-3px);background:#174b3e}
+.btn:active{transform:scale(.97)}
+.btn.soft{background:var(--white);color:var(--ink)}
+.btn.soft:hover{background:var(--sage)}
+.btn.s{min-height:44px;padding:8px 22px;font-size:17px}
+
+.hero{display:grid;grid-template-columns:1.45fr .55fr;gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(24px,5vw,64px) 0 clamp(64px,9vw,120px)}
+.hero h1{font-size:clamp(1.7rem,3.4vw,3rem)}
+.hero h1 span{color:var(--deep)}
+.hero p.lede{margin:24px 0 34px;max-width:38ch;font-size:clamp(1.1rem,1.5vw,1.3rem);color:var(--muted);line-height:1.8}
+.hero .act{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.tag{background:var(--white);padding:8px 18px;border-radius:999px;font-weight:500;font-size:16px}
+.art{position:relative;aspect-ratio:1/1.02;max-width:520px;width:100%;justify-self:center}
+.art svg{width:100%;height:100%;overflow:visible}
+.float{animation:bob 7s ease-in-out infinite}.float.b{animation-delay:-3s;animation-duration:9s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.chip{position:absolute;background:var(--white);padding:10px 18px;border-radius:20px;font-weight:600;font-size:16px;line-height:1.5;box-shadow:0 12px 30px -14px rgba(23,52,46,.35)}
+.chip small{display:block;font-weight:400;color:var(--muted);font-size:15px}
+.c1{left:-4%;bottom:14%}.c2{right:-2%;top:10%}
+
+section{padding:0 0 clamp(72px,10vw,130px)}
+.eh{max-width:640px;margin-bottom:clamp(32px,5vw,56px)}
+.eh h2{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+.eh p{color:var(--muted);margin-top:14px;font-size:19px}
+.panels{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.pn{border-radius:var(--r);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;min-height:290px;transition:transform .4s var(--ease)}
+.pn:hover{transform:translateY(-6px)}
+.pn h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:10px}
+.pn p{font-size:17px;max-width:36ch;opacity:.88}
+.pn svg{width:76px;height:76px;margin-bottom:22px}
+.p1{grid-column:span 5;background:var(--butter)}
+.p2{grid-column:span 4;background:var(--sky);margin-top:36px}
+.p3{grid-column:span 3;background:var(--peach)}
+.p4{grid-column:span 7;background:var(--sage);min-height:240px;flex-direction:row;align-items:flex-end;gap:24px}
+.p5{grid-column:span 5;background:var(--white);min-height:240px}
+.pn p.big{max-width:none;opacity:1;font-size:clamp(3rem,6vw,5rem);font-weight:700;line-height:1.1;color:var(--deep)}
+
+.day{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative}
+.day::before{content:"";position:absolute;left:5%;right:5%;top:30px;height:6px;border-radius:99px;background:var(--sage)}
+.step{position:relative;padding-top:64px}
+.step::before{content:"";position:absolute;top:18px;left:0;width:30px;height:30px;border-radius:50%;background:var(--deep);border:6px solid var(--ground);box-sizing:content-box;margin:-6px}
+.step b{display:block;font-size:20px;font-weight:700}
+.step span{display:block;color:var(--muted);font-weight:500;margin-top:2px;font-size:16px}
+.step p{margin-top:6px;font-size:16px;opacity:.88;max-width:20ch}
+
+.finder{background:var(--white);border-radius:40px;padding:clamp(24px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.finder h2{font-size:clamp(1.45rem,2.3vw,2rem)}
+.age{margin-top:30px}
+.age label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:16px}
+.age output{font-size:22px;color:var(--deep);font-weight:700}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:99px;background:var(--sage);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:36px;height:36px;border-radius:50%;background:var(--deep);border:6px solid var(--butter);cursor:grab}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--deep);border:6px solid var(--butter);cursor:grab}
+input[type=range]:focus-visible{outline:3px solid var(--deep);outline-offset:8px}
+.ticks{display:flex;justify-content:space-between;margin-top:10px;color:var(--muted);font-weight:500;font-size:15px}
+.result{border-radius:32px;padding:clamp(24px,3.4vw,44px);background:var(--butter);transition:background .5s var(--ease)}
+.result .grp{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;line-height:1.38}
+.result .meta{margin-top:4px;font-weight:500;opacity:.85}
+.result ul{list-style:none;margin:20px 0;display:flex;flex-direction:column;gap:10px}
+.result li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.result li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--deep);margin-top:13px}
+.fee{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;font-weight:700;font-size:clamp(1.6rem,2.6vw,2.2rem)}
+.fee small{font-size:16px;font-weight:500;opacity:.8}
+
+.faq{max-width:800px}
+details{background:var(--white);border-radius:24px;margin-bottom:12px;padding:0 28px;transition:background .25s}
+details[open]{background:var(--sage)}
+summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:600;font-size:19px;display:flex;justify-content:space-between;gap:16px;align-items:center;line-height:1.6}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;width:36px;height:36px;border-radius:50%;background:var(--ground);display:grid;place-items:center;font-size:22px;line-height:1;transition:transform .3s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);max-width:60ch}
+details[open] p{color:var(--ink)}
+
+.visit{background:var(--deep);color:var(--on-deep);border-radius:48px;padding:clamp(32px,6vw,80px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,64px);align-items:end}
+.visit h2{font-size:clamp(1.6rem,3.2vw,2.6rem)}
+.visit p{margin:18px 0 28px;max-width:42ch;opacity:.92}
+.visit .btn{background:var(--butter);color:var(--ink)}
+.visit .btn:hover{background:#fff0b8}
+.visit dl{display:grid;gap:16px}
+.visit dt{font-size:15px;font-weight:500;opacity:.78}
+.visit dd{font-size:18px;font-weight:500;line-height:1.6}
+footer{padding:36px var(--margin) 48px;max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:15px}
+footer a{margin-right:18px}footer a:hover{color:var(--ink)}
+
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:920px){
+  nav a.l{display:none}
+  .hero{grid-template-columns:1fr}.art{max-width:400px}
+  .panels{grid-template-columns:1fr 1fr}
+  .p1,.p2,.p3,.p4,.p5{grid-column:span 1;margin-top:0}.p4,.p5{grid-column:1/-1}
+  .day{grid-template-columns:1fr;gap:0}
+  .day::before{left:14px;right:auto;top:10px;bottom:10px;width:6px;height:auto}
+  .step{padding:0 0 28px 56px}.step::before{top:0;left:0}.step p{max-width:none}
+  .finder,.visit{grid-template-columns:1fr}
+}
+@media(max-width:560px){.panels{grid-template-columns:1fr}.p4{flex-direction:column;align-items:flex-start}.c1{left:0}.c2{right:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">உள்ளடக்கத்துக்குச் செல்</a>
+<header>
+  <a class="logo" href="#" aria-label="தளிர் கற்றல் மையம் முகப்பு">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="13" fill="#1f5c4d"/><path d="M20 31V17M20 17c0-6 4-9 10-9 0 6-4 9-10 9zM20 22c0-5-3-7-9-7 0 5 3 7 9 7z" fill="none" stroke="#f7e6a8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    தளிர்
+  </a>
+  <nav aria-label="முதன்மை">
+    <a class="l" href="#approach">அணுகுமுறை</a>
+    <a class="l" href="#day">ஒரு நாள்</a>
+    <a class="l" href="#groups">குழுக்கள்</a>
+    <a class="btn s" href="#visit">பார்வையிட</a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <div>
+      <h1 class="rv">சிறு குழந்தைகள், <span>ஆழமான வேர்கள்.</span></h1>
+      <p class="lede rv" style="--i:1">கோயம்புத்தூரில் 2 முதல் 6 வயது வரை உள்ள குழந்தைகளுக்கான சிறிய, விளையாட்டு வழிப் பள்ளி. ஒவ்வொரு குழுவிலும் பன்னிரண்டு குழந்தைகள் மட்டுமே. தமிழும் ஆங்கிலமும். மதிய உணவுக்கு முன் வீடு.</p>
+      <div class="act rv" style="--i:2"><a class="btn" href="#visit">பள்ளியைப் பார்வையிட</a><a class="btn soft" href="#groups">உங்கள் குழந்தைக்கான குழு</a></div>
+      <div class="tags rv" style="--i:3"><span class="tag">2 முதல் 6 வயது</span><span class="tag">தமிழ் மற்றும் ஆங்கிலம்</span><span class="tag">காலை நேர வகுப்பு மட்டும்</span></div>
+    </div>
+    <div class="art rv" style="--i:2" aria-hidden="true">
+      <svg viewBox="0 0 520 530">
+        <path d="M60 300C20 170 120 40 270 36c150-4 230 100 220 230-10 140-120 230-250 224C120 484 90 400 60 300z" fill="#f7e6a8"/>
+        <circle cx="400" cy="120" r="46" fill="#f9dccb"/>
+        <g class="float"><path d="M262 440V258" stroke="#1f5c4d" stroke-width="14" stroke-linecap="round"/><path d="M262 300c0-70 50-110 130-110 0 70-50 110-130 110z" fill="#1f5c4d"/><path d="M262 352c0-60-40-96-110-96 0 60 40 96 110 96z" fill="#3d8a73"/></g>
+        <ellipse cx="262" cy="448" rx="120" ry="22" fill="#17342e" opacity=".12"/>
+        <g class="float b"><rect x="92" y="384" width="62" height="62" rx="16" fill="#d4e6f5" transform="rotate(-10 123 415)"/><rect x="132" y="336" width="54" height="54" rx="14" fill="#f9dccb" transform="rotate(8 159 363)"/></g>
+        <circle cx="420" cy="360" r="26" fill="#d3e8dc"/><circle cx="70" cy="190" r="14" fill="#1f5c4d" opacity=".85"/>
+      </svg>
+      <div class="chip c1">12 குழந்தைகள்<small>ஒவ்வொரு குழுவிலும்</small></div>
+      <div class="chip c2">காலை 9 முதல் 1 வரை<small>திங்கள் முதல் வெள்ளி</small></div>
+    </div>
+  </div>
+
+  <section id="approach" aria-labelledby="h-a">
+    <div class="eh"><h2 id="h-a" class="rv">விளையாட்டாகவே கற்றல்.</h2><p class="rv" style="--i:1">குழந்தைகள் ஆர்வத்துடனும் அவசரமின்றியும் ஈடுபடும்போது சிறப்பாகக் கற்கிறார்கள். எங்கள் நாட்கள் அதைச் சுற்றியே அமைந்துள்ளன.</p></div>
+    <div class="panels">
+      <article class="pn p1 rv"><div><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="30" fill="#fff" opacity=".6"/><path d="M26 50c4-16 14-24 32-24-2 18-12 26-32 24z" fill="#1f5c4d"/></svg><h3>இரண்டு மொழிகள், இயல்பாக</h3><p>நாள் முழுவதும் கதைகள், பாடல்கள், உரையாடல் தமிழிலும் ஆங்கிலத்திலும். மனப்பாடம் இல்லை, அட்டைகள் இல்லை.</p></div></article>
+      <article class="pn p2 rv" style="--i:1"><div><svg viewBox="0 0 84 84" aria-hidden="true"><rect x="14" y="30" width="30" height="30" rx="8" fill="#fff" opacity=".7"/><rect x="40" y="18" width="30" height="30" rx="8" fill="#1f5c4d"/></svg><h3>கையால் செய்து கற்றல்</h3><p>மணல், களிமண், தண்ணீர், கட்டைகள், காய்கறித் தோட்டம். எண்களும் எழுத்துகளும் தொட்டுப் பார்க்கும் பொருட்களிலிருந்து வருகின்றன.</p></div></article>
+      <article class="pn p3 rv" style="--i:2"><div><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="28" fill="#fff" opacity=".6"/><circle cx="42" cy="42" r="12" fill="#1f5c4d"/></svg><h3>தினமும் வெளியே</h3><p>வேப்பமரத்தின் கீழ் ஒரு மணி நேரம், பருவநிலை அனுமதிக்கும் எல்லா நாட்களிலும்.</p></div></article>
+      <article class="pn p4 rv"><p class="big">1 : 6</p><div><h3>ஆறு குழந்தைகளுக்கு ஒரு ஆசிரியர்</h3><p>ஒவ்வொரு குழந்தையையும் பெயராலும் குணத்தாலும், எதைச் செய்தால் சிரிப்பார்கள் என்பதாலும் அறிவோம்.</p></div></article>
+      <article class="pn p5 rv" style="--i:1"><div><h3>பெற்றோரும் இதில் பங்கு</h3><p>தினமும் குழந்தையை அழைத்துச் செல்லும்போது ஒரு சிறு உரையாடல், ஒவ்வொரு பருவத்திலும் விரிவான சந்திப்பு. நிலைமை எப்போதும் உங்களுக்குத் தெரியும்.</p></div></article>
+    </div>
+  </section>
+
+  <section id="day" aria-labelledby="h-d">
+    <div class="eh"><h2 id="h-d" class="rv">தளிரில் ஒரு காலை</h2></div>
+    <div class="day">
+      <div class="step rv"><b>9:00</b><span>வருகை</span><p>சுதந்திர விளையாட்டு, வணக்க வட்டம்.</p></div>
+      <div class="step rv" style="--i:1"><b>9:45</b><span>உருவாக்கு</span><p>களிமண், ஓவியம், கட்டைகள் அல்லது இசை.</p></div>
+      <div class="step rv" style="--i:2"><b>10:45</b><span>சிற்றுண்டி</span><p>பழங்கள், ஒன்றாக அமர்ந்து.</p></div>
+      <div class="step rv" style="--i:3"><b>11:15</b><span>வெளியே</span><p>தோட்டம், மணல், ஓட்டம்.</p></div>
+      <div class="step rv" style="--i:4"><b>12:15</b><span>கதை</span><p>தமிழிலும் ஆங்கிலத்திலும் மாறி மாறி.</p></div>
+      <div class="step rv" style="--i:5"><b>1:00</b><span>வீடு</span><p>ஒவ்வொரு பெற்றோருடனும் ஒரு வார்த்தை.</p></div>
+    </div>
+  </section>
+
+  <section id="groups" aria-labelledby="h-g">
+    <div class="finder rv">
+      <div>
+        <h2 id="h-g">உங்கள் குழந்தைக்கான குழு</h2>
+        <div class="age">
+          <label for="age"><span>குழந்தையின் வயது</span><output id="age-out" for="age">3 வயது</output></label>
+          <input id="age" type="range" min="2" max="6" step="0.5" value="3">
+          <div class="ticks" aria-hidden="true"><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+        </div>
+      </div>
+      <div class="result" id="result" aria-live="polite">
+        <div class="grp" id="g-name">மொட்டுகள்</div>
+        <div class="meta" id="g-meta">3 முதல் 4 வயது</div>
+        <ul id="g-list"></ul>
+        <div class="fee"><span id="g-fee">₹4,800</span><small>மாதம், மாதிரிக் கட்டணம்</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-f">
+    <div class="eh"><h2 id="h-f" class="rv">பெற்றோர் கேட்கும் கேள்விகள்</h2></div>
+    <div class="faq rv">
+      <details><summary>குழந்தை கழிப்பறைப் பழக்கம் பெற்றிருக்க வேண்டுமா?</summary><p>தேவையில்லை. எங்கள் ஆசிரியர்கள் இதற்குப் பழகியவர்கள்; குழந்தையின் வேகத்தில் உதவுவார்கள்.</p></details>
+      <details><summary>முதல் நாட்களில் குழந்தை அழுதால் என்ன செய்வீர்கள்?</summary><p>அது இயல்பே. முதல் சில காலைகள் நீங்கள் உடன் இருக்கலாம்; ஒவ்வொரு நாளும் சற்று முன்னதாகப் புறப்படலாம். குழந்தை பழகியதும் உங்களுக்குச் செய்தி அனுப்புவோம்.</p></details>
+      <details><summary>உணவு வழங்கப்படுமா?</summary><p>பழச் சிற்றுண்டி வழங்குகிறோம். வகுப்புக்குப் பிறகு தேவைப்பட்டால் மதிய உணவைக் கொடுத்தனுப்பவும். எங்கள் இடம் கொட்டை வகைகள் இல்லாதது.</p></details>
+      <details><summary>சேர்க்கை எப்படி நடக்கிறது?</summary><p>வந்து பாருங்கள், ஆசிரியர்களைச் சந்தியுங்கள், ஒரு காலையை எங்களுடன் செலவிடுங்கள். சரியான குழுவில் இடம் இருந்தால் வழங்குவோம். குழுக்கள் பன்னிரண்டு பேருடன் நிறுத்தப்படும்.</p></details>
+    </div>
+  </section>
+
+  <section id="visit" aria-labelledby="h-v">
+    <div class="visit rv">
+      <div><h2 id="h-v">வந்து பாருங்கள்.</h2><p>பார்வை நேரங்கள் வார நாட்களின் காலை, சுமார் ஒரு மணி நேரம். குழந்தையையும் அழைத்து வாருங்கள்; அவர்கள் அங்கேயே இருக்க விரும்புவார்கள்.</p><a class="btn" href="tel:+910000000000">பார்வைக்கு அழைக்க</a></div>
+      <dl>
+        <div><dt>இடம்</dt><dd>12 தாமரைச் சந்து, ஆர்.எஸ். புரம், கோயம்புத்தூர்</dd></div>
+        <div><dt>நேரம்</dt><dd>திங்கள் முதல் வெள்ளி வரை, காலை 9 முதல் மதியம் 1 வரை</dd></div>
+        <div><dt>பார்வை</dt><dd>முன்பதிவுடன், வார நாட்களின் காலை</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer><span>&copy; 2026 தளிர் கற்றல் மையம்</span><span><a href="#">தனியுரிமை</a><a href="#">குழந்தைப் பாதுகாப்புக் கொள்கை</a></span></footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+  var G=[
+    {max:3,name:'முளைகள்',ages:'2 முதல் 3 வயது',bg:'#d4e6f5',fee:4200,list:['புலன்களால் விளையாட்டு, பாடல்கள்','ஓய்வு நேரத்துடன் சிறிய, மென்மையான காலைகள்','எப்போதும் அருகில் ஒரு ஆசிரியர்']},
+    {max:4,name:'மொட்டுகள்',ages:'3 முதல் 4 வயது',bg:'#f7e6a8',fee:4800,list:['கதைகள், களிமண், முதல் எண்ணும் விளையாட்டுகள்','தினமும் தோட்ட நேரம்','தமிழும் ஆங்கிலமும் மாறி மாறி']},
+    {max:5,name:'மலர்கள்',ages:'4 முதல் 5 வயது',bg:'#f9dccb',fee:5200,list:['செய்து பார்த்தபடியே எழுத்துகள், எண்கள்','ஒன்றாகச் செய்யும் சிறு திட்டங்கள்','குழுவில் தயக்கமின்றிப் பேசும் தன்னம்பிக்கை']},
+    {max:7,name:'கிளைகள்',ages:'5 முதல் 6 வயது',bg:'#d3e8dc',fee:5600,list:['அவசரமில்லாத வாசிப்பு, எழுத்துத் தயாரிப்பு','நீண்ட திட்டங்கள், வகுப்புத் தோட்டம்','எந்தத் தொடக்கப் பள்ளிக்கும் தயார்']}
+  ];
+  var range=document.getElementById('age'),out=document.getElementById('age-out'),res=document.getElementById('result');
+  function show(){
+    var a=+range.value,g=G[3];
+    for(var i=0;i<G.length;i++){if(a<G[i].max){g=G[i];break}}
+    out.textContent=a+' வயது';
+    document.getElementById('g-name').textContent=g.name;
+    document.getElementById('g-meta').textContent=g.ages;
+    document.getElementById('g-fee').textContent='₹'+g.fee.toLocaleString('en-IN');
+    document.getElementById('g-list').innerHTML=g.list.map(function(t){return '<li>'+t+'</li>'}).join('');
+    res.style.background=g.bg;
+  }
+  range.addEventListener('input',show);show();
+})();
+</script>
+</body>
+</html>
