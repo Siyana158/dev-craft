@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kettle &amp; Co. - Single-estate tea, roasted weekly in Chennai</title>
+<meta name="description" content="Single-estate tea from twelve small gardens, roasted every Tuesday in Chennai and at your door within seven days.">
+<meta property="og:title" content="Kettle &amp; Co. - Twelve gardens, one kitchen">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23cf3b2b'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Georgia' font-weight='700' text-anchor='middle' fill='%23e4eadf'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#e4eadf; --tone:#d2ddc7; --ink:#0d1f17; --deep:#0e2a20; --red:#b8321f; --on-deep:#e4eadf;
+  --font:"Bricolage Grotesque",system-ui,sans-serif;
+  --s1:4px; --s2:8px; --s3:16px; --s4:24px; --s5:40px; --s6:72px; --s7:128px; --s8:176px;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --margin:clamp(16px,3vw,32px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font:400 18px/1.55 var(--font);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--ground);padding:12px 18px;z-index:10}
+.skip:focus{left:8px}
+h1,h2,h3{text-wrap:balance;font-weight:800}
+
+/* header */
+header{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--margin)}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none}
+nav{display:flex;align-items:center;gap:var(--s5)}
+nav a.link{text-decoration:none;font-weight:500;font-size:17px;transition:opacity .2s var(--ease)}
+nav a.link:hover{opacity:.55}
+
+/* buttons: flat, square, one decision */
+.btn{display:inline-block;background:var(--red);color:var(--ground);font:700 17px/1 var(--font);padding:18px 28px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),background .25s var(--ease)}
+.btn:hover{transform:translateY(-3px);background:#9c2a19}
+.btn:active{transform:scale(.98)}
+.btn.small{padding:12px 20px;font-size:16px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4);padding:var(--s5) var(--margin) var(--s7);min-height:calc(100dvh - 96px);align-items:end}
+.hero h1{grid-column:1/9;font-size:clamp(2.5rem,7.4vw,8rem);line-height:.9;letter-spacing:-.045em}
+.hero .side{grid-column:9/13;display:flex;flex-direction:column;gap:var(--s4);align-self:stretch;justify-content:flex-end}
+.stamp{background:var(--red);color:var(--ground);padding:var(--s4);display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:260px}
+.stamp b{font-size:clamp(2.6rem,5vw,4.4rem);line-height:.9;letter-spacing:-.04em;font-weight:800}
+.stamp span{font-size:17px;font-weight:500;max-width:22ch}
+.hero .lede{grid-column:1/7;font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.35;max-width:34ch;margin-top:var(--s4);font-weight:500}
+.hero .act{grid-column:1/9;display:flex;gap:var(--s5);align-items:center;margin-top:var(--s2)}
+.act a.t{font-weight:700;text-underline-offset:6px}
+
+/* section scaffolding */
+section{padding:var(--s8) var(--margin) 0}
+section h2,.brew h2{font-size:clamp(2.4rem,6vw,5.6rem);line-height:.92;letter-spacing:-.04em;max-width:14ch}
+
+/* tins: label compositions, no cards */
+.tins{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(190px,auto);gap:var(--s3);margin-top:var(--s6)}
+.tin{display:flex;flex-direction:column;justify-content:space-between;padding:var(--s4);color:var(--ink);background:var(--tone);transition:transform .35s var(--ease)}
+.tin:hover{transform:translateY(-6px)}
+.tin .name{font-weight:800;letter-spacing:-.04em;line-height:.9}
+.tin .meta{font-weight:500;font-size:17px;line-height:1.35}
+.tin .price{font-weight:800;font-size:22px;letter-spacing:-.02em}
+.tin .row{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s3)}
+.t1{grid-column:1/8;grid-row:span 3;background:var(--deep);color:var(--on-deep)}
+.t1 .name{font-size:clamp(3rem,7vw,7rem)}
+.t2{grid-column:8/13;grid-row:span 2;background:var(--red);color:var(--ground)}
+.t2 .name{font-size:clamp(2.4rem,4.4vw,4.4rem)}
+.t3{grid-column:8/13}
+.t3 .name{font-size:clamp(2rem,3vw,3rem)}
+.t4{grid-column:1/6;grid-row:span 2}
+.t4 .name{font-size:clamp(2.4rem,4.4vw,4.4rem)}
+.t5{grid-column:6/13;background:var(--ink);color:var(--on-deep)}
+.t5 .name{font-size:clamp(2.4rem,4.4vw,4.4rem)}
+.t6{grid-column:6/13;background:var(--tone)}
+.t6 .name{font-size:clamp(2rem,3vw,3rem)}
+
+/* brew: deep field */
+.brew{background:var(--deep);color:var(--on-deep);margin-top:var(--s8);padding:var(--s7) var(--margin)}
+.brew h2{max-width:11ch}
+.brew-grid{display:grid;grid-template-columns:5fr 7fr;gap:var(--s6);margin-top:var(--s6);align-items:start}
+.picker{display:flex;flex-direction:column;gap:var(--s2)}
+.picker label{display:block;cursor:pointer}
+.picker input{position:absolute;opacity:0;pointer-events:none}
+.picker span{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:#16382c;font-weight:700;font-size:20px;min-height:64px;transition:background .25s var(--ease),transform .25s var(--ease)}
+.picker label:hover span{background:#1d4838}
+.picker input:checked+span{background:var(--ground);color:var(--ink)}
+.picker input:focus-visible+span{outline:3px solid var(--red);outline-offset:3px}
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+.readout div{display:flex;flex-direction:column}
+.readout b{font-size:clamp(3.4rem,8vw,7.6rem);line-height:.9;letter-spacing:-.05em;font-weight:800}
+.readout small{font-size:17px;font-weight:500;opacity:.8;margin-top:var(--s2)}
+.clock{grid-column:1/-1;margin-top:var(--s5)}
+.clock b{font-size:clamp(5rem,16vw,15rem);font-variant-numeric:tabular-nums;color:var(--ground)}
+.clock .btn{margin-top:var(--s4);align-self:flex-start}
+.note{margin-top:var(--s5);max-width:48ch;font-size:19px}
+
+/* gardens: full content list, large type */
+.gardens{display:grid;grid-template-columns:5fr 7fr;gap:var(--s6);margin-top:var(--s6)}
+.gardens p{font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.35;font-weight:500;max-width:28ch}
+.gl{list-style:none;columns:2;column-gap:var(--s5)}
+.gl li{font-size:clamp(1.3rem,2.2vw,2rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;padding:10px 0;break-inside:avoid}
+.gl li small{display:block;font-weight:400;font-size:16px;letter-spacing:0;opacity:.7}
+
+/* faq as two-column plain text, not accordion */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6) var(--s6);margin-top:var(--s6)}
+.faq h3{font-size:clamp(1.5rem,2.4vw,2.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:var(--s2)}
+.faq p{max-width:40ch}
+
+/* footer: the name returns */
+footer{padding:var(--s8) var(--margin) var(--s5)}
+.big{font-size:clamp(4rem,19vw,19rem);font-weight:800;letter-spacing:-.035em;line-height:.85;margin-top:var(--s6)}
+.fl{display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;margin-top:var(--s5);font-size:16px;font-weight:500}
+.fl a{margin-right:var(--s4)}
+
+/* reveal: content stays visible without JS */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  nav a.link{display:none}
+  .hero{grid-template-columns:1fr;min-height:0;padding-bottom:var(--s6)}
+  .hero h1,.hero .lede,.hero .act,.hero .side{grid-column:1}
+  .hero .act{flex-wrap:wrap;gap:var(--s4)}
+  .stamp{min-height:200px}
+  section{padding-top:var(--s7)}
+  .tins{grid-template-columns:1fr}
+  .tins .tin{grid-column:1;grid-row:auto;min-height:230px}
+  .brew{margin-top:var(--s7);padding:var(--s6) var(--margin)}
+  .brew-grid,.gardens,.faq{grid-template-columns:1fr;gap:var(--s5)}
+  .gl{columns:1}
+  .readout b{font-size:clamp(3.4rem,18vw,6rem)}
+  .clock b{font-size:clamp(5rem,30vw,9rem)}
+  footer{padding-top:var(--s7)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="logo" href="#">Kettle &amp; Co.</a>
+  <nav aria-label="Main">
+    <a class="link" href="#tins">Tins</a>
+    <a class="link" href="#brew">Brew</a>
+    <a class="link" href="#gardens">Gardens</a>
+    <a class="btn small" href="#tins">Shop</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <h1 class="rv">Twelve gardens. One kitchen.</h1>
+    <div class="side rv" style="--i:2">
+      <div class="stamp">
+        <b>Roasted Tuesday 13 Oct</b>
+        <span>At your door in 7 days or less.</span>
+      </div>
+    </div>
+    <p class="lede rv" style="--i:1">Single-estate tea from small gardens in Darjeeling, Assam and the Nilgiris, roasted every Tuesday in Chennai. The garden is named on every tin.</p>
+    <div class="act rv" style="--i:3">
+      <a class="btn" href="#tins">Shop this week's tins</a>
+      <a class="t" href="#brew">How to brew it</a>
+    </div>
+  </div>
+
+  <section id="tins" aria-labelledby="h-tins">
+    <h2 id="h-tins" class="rv">This week's tins</h2>
+    <div class="tins">
+      <article class="tin t1 rv">
+        <p class="meta">Darjeeling, first flush. Grown at 1,980 m. Light, floral, muscatel on the finish. Pale gold in the cup.</p>
+        <div class="row"><h3 class="name">Castleton Moonlight</h3><p class="price">&#8377;1,450<br><span class="meta">50 g</span></p></div>
+      </article>
+      <article class="tin t2 rv" style="--i:1">
+        <p class="meta">Assam, second flush. Malty and dark. Takes milk without disappearing.</p>
+        <div class="row"><h3 class="name">Thowra Morning</h3><p class="price">&#8377;520<br><span class="meta">100 g</span></p></div>
+      </article>
+      <article class="tin t3 rv" style="--i:2">
+        <p class="meta">Nilgiri, 2,100 m. Citrus and cut grass. Good over ice.</p>
+        <div class="row"><h3 class="name">Blue Hills</h3><p class="price">&#8377;480<br><span class="meta">100 g</span></p></div>
+      </article>
+      <article class="tin t4 rv">
+        <p class="meta">Darjeeling, autumn flush. Amber, round, a little like toasted bread. The tea to drink at four.</p>
+        <div class="row"><h3 class="name">Thurbo Autumn</h3><p class="price">&#8377;890<br><span class="meta">75 g</span></p></div>
+      </article>
+      <article class="tin t5 rv" style="--i:1">
+        <p class="meta">Assam, smoked over rain-tree wood. Strong, resinous, for people who like their tea loud.</p>
+        <div class="row"><h3 class="name">Dikom Smoke</h3><p class="price">&#8377;640<br><span class="meta">100 g</span></p></div>
+      </article>
+      <article class="tin t6 rv" style="--i:2">
+        <p class="meta">Nilgiri green. Sweet, vegetal, forgiving. The one for beginners.</p>
+        <div class="row"><h3 class="name">Coonoor Green</h3><p class="price">&#8377;560<br><span class="meta">100 g</span></p></div>
+      </article>
+    </div>
+  </section>
+
+  <div class="brew" id="brew">
+    <h2 class="rv">Brew it right.</h2>
+    <div class="brew-grid">
+      <fieldset class="picker rv" style="border:0">
+        <legend style="position:absolute;left:-999px">Choose a tea</legend>
+        <label><input type="radio" name="tea" value="castleton" data-temp="85" data-sec="180" data-g="3" checked><span>Castleton Moonlight</span></label>
+        <label><input type="radio" name="tea" value="thowra" data-temp="95" data-sec="240" data-g="3"><span>Thowra Morning</span></label>
+        <label><input type="radio" name="tea" value="blue" data-temp="90" data-sec="210" data-g="3"><span>Blue Hills</span></label>
+        <label><input type="radio" name="tea" value="thurbo" data-temp="90" data-sec="180" data-g="3"><span>Thurbo Autumn</span></label>
+        <label><input type="radio" name="tea" value="dikom" data-temp="98" data-sec="270" data-g="4"><span>Dikom Smoke</span></label>
+        <label><input type="radio" name="tea" value="coonoor" data-temp="80" data-sec="150" data-g="3"><span>Coonoor Green</span></label>
+      </fieldset>
+      <div class="rv" style="--i:1">
+        <div class="readout">
+          <div><b id="o-temp">85&deg;</b><small>Water temperature, Celsius</small></div>
+          <div><b id="o-g">3 g</b><small>Leaf per 250 ml cup</small></div>
+          <div class="clock">
+            <b id="o-clock" aria-live="off">3:00</b>
+            <small id="o-state">Steep time. Press start when the water is poured.</small>
+            <button class="btn" id="go" type="button">Start timer</button>
+          </div>
+        </div>
+        <p class="note">Without the timer: each tea's temperature, time and leaf amount is shown above whenever you select it. Pour, cover, wait, remove the leaves.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="gardens" aria-labelledby="h-gardens">
+    <h2 id="h-gardens" class="rv">Who grows it</h2>
+    <div class="gardens">
+      <p class="rv">We buy from gardens that pick by hand and sell in small lots. Each one is named on the tin, with the height it grows at.</p>
+      <ul class="gl rv" style="--i:1">
+        <li>Castleton <small>Darjeeling, 1,980 m</small></li>
+        <li>Thurbo <small>Darjeeling, 1,650 m</small></li>
+        <li>Thowra <small>Assam, Jorhat</small></li>
+        <li>Dikom <small>Assam, Dibrugarh</small></li>
+        <li>Coonoor Hills <small>Nilgiri, 1,850 m</small></li>
+        <li>Blue Ridge <small>Nilgiri, 2,100 m</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-faq">
+    <h2 id="h-faq" class="rv">Before you order</h2>
+    <div class="faq">
+      <div class="rv"><h3>How fresh is it?</h3><p>We roast on Tuesdays and post on Wednesdays. Most orders reach Chennai the next day and the rest of India within seven days.</p></div>
+      <div class="rv" style="--i:1"><h3>What if I don't like it?</h3><p>Write to us within 14 days and we will send a different tin or refund you. You do not need to send the tea back.</p></div>
+      <div class="rv"><h3>Can I buy a single cup?</h3><p>Not yet. The smallest tin is 50 g, which makes about sixteen cups.</p></div>
+      <div class="rv" style="--i:1"><h3>Do you ship abroad?</h3><p>Not at the moment. India only, with tracked courier.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="btn" href="mailto:hello@kettleandco.example?subject=Order%20from%20Kettle%20%26%20Co.&body=I%27d%20like%20to%20order%3A">Order by email</a>
+  <p class="big rv">Kettle &amp; Co.</p>
+  <div class="fl">
+    <span>14 Pycrofts Road, Chennai. Open Tuesdays to Saturdays, 8 to 4.</span>
+    <span><a href="#">Privacy</a><a href="#">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* reveal */
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+
+  /* brew timer */
+  var radios=document.querySelectorAll('input[name=tea]');
+  var oT=document.getElementById('o-temp'),oG=document.getElementById('o-g'),oC=document.getElementById('o-clock'),oS=document.getElementById('o-state'),go=document.getElementById('go');
+  var sec=180,timer=null;
+  function fmt(s){var m=Math.floor(s/60),r=s%60;return m+':'+(r<10?'0':'')+r}
+  function pick(){
+    var r=document.querySelector('input[name=tea]:checked');
+    stop();
+    oT.textContent=r.dataset.temp+'°';oG.textContent=r.dataset.g+' g';
+    sec=+r.dataset.sec;oC.textContent=fmt(sec);
+    oS.textContent='Steep time. Press start when the water is poured.';go.textContent='Start timer';
+  }
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  go.addEventListener('click',function(){
+    if(timer){pick();return}
+    var left=sec,end=Date.now()+left*1000;
+    go.textContent='Reset';oS.textContent='Steeping.';
+    timer=setInterval(function(){
+      left=Math.max(0,Math.round((end-Date.now())/1000));
+      oC.textContent=fmt(left);
+      if(left===0){stop();oS.textContent='Ready. Take the leaves out and pour.';oC.setAttribute('aria-live','polite');go.textContent='Start again';}
+    },250);
+  });
+  radios.forEach(function(r){r.addEventListener('change',pick)});
+  pick();
+})();
+</script>
+</body>
+</html>
