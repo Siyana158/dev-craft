@@ -13,11 +13,28 @@ plus two dependency-free scripts that check the result in a real browser.
 
 </div>
 
+## Install
+
 ```bash
 npx skills add Siyana158/ui-craft-skills
 ```
 
+Run it from the root of your project. It copies three skills into `.agents/skills/`, links them for the tools it detects, and records the source in `skills-lock.json`. Start a new session afterwards so the skills are listed.
+
+| You need | For |
+|---|---|
+| Node 18+ | installing, and `lint.mjs` |
+| Node 22+ and any installed Chrome, Edge or Chromium | `inspect.mjs` |
+
 Works with any agent that reads `SKILL.md` skills (see the `skills` CLI for supported tools).
+
+**Try it.** After installing, ask in plain language: *"build a landing page for a small bakery"*. The agent should write a brief card, a tokens file and the copy first, then build the page, then run the inspector and show screenshots.
+
+**Update or remove.** Re-run the install command to update. To remove, delete the three folders from `.agents/skills/` and the matching entries in `skills-lock.json`.
+
+**Without the installer.** Copy `skills/*` into your tool's skills folder by hand, or clone the repo and run the scripts directly.
+
+Skills can run commands with your agent's permissions. Read `skills/*/SKILL.md` and the two scripts before first use.
 
 <p align="center">
   <img src="docs/images/example-desktop.png" alt="Desktop view of the example page: a large two-line headline and a red tin-label block" width="720">
