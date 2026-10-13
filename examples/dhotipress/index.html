@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhoti Press - Risograph printing in Chennai</title>
+<meta name="description" content="Risograph print studio in Chennai. Zines, posters and booklets from 20 copies. Price list and a quote calculator.">
+<meta property="og:title" content="Dhoti Press - risograph printing, Chennai">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='6' y='6' width='20' height='20' fill='%23ff3b00'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2f2ee; --ink:#000; --hot:#ff3b00; --grey:#4a4a4a;
+  --head:"Archivo Narrow","Arial Narrow",sans-serif; --body:"Courier Prime","Courier New",monospace;
+  --m:clamp(14px,2.4vw,28px);
+}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.5 var(--body)}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--hot);outline-offset:0}
+h1,h2,h3{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.skip{position:absolute;left:-999px;top:0;background:var(--hot);color:#000;padding:10px;z-index:100}
+.skip:focus{left:0}
+.frame{max-width:1360px;margin:0 auto;border-inline:3px solid var(--ink)}
+
+header{display:grid;grid-template-columns:1fr auto;border-bottom:3px solid var(--ink)}
+.logo{padding:var(--m);font:700 clamp(1.4rem,2.6vw,2rem)/1 var(--head);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:12px}
+.logo i{width:22px;height:22px;background:var(--hot);display:inline-block}
+nav{display:flex}
+nav a{display:flex;align-items:center;padding:0 clamp(14px,2.4vw,32px);border-left:3px solid var(--ink);font-weight:700;text-transform:uppercase;text-decoration:none;font-size:15px}
+nav a:hover,nav a:focus-visible{background:var(--ink);color:var(--paper)}
+nav a.hot{background:var(--hot)}
+nav a.hot:hover{background:var(--ink);color:var(--hot)}
+
+.hero{display:grid;grid-template-columns:2fr 1fr;border-bottom:3px solid var(--ink)}
+.hero>div{padding:var(--m)}
+.hero h1{font-size:clamp(3.4rem,11.5vw,11rem);padding-bottom:.05em}
+.hero h1 b{color:var(--hot);font-weight:700}
+.hero aside{border-left:3px solid var(--ink);display:flex;flex-direction:column}
+.hero aside p{padding:var(--m);border-bottom:3px solid var(--ink);flex:1}
+.hero aside .btn{border:0}
+.btn{display:block;background:var(--ink);color:var(--paper);font:700 20px/1 var(--head);text-transform:uppercase;padding:22px var(--m);text-decoration:none;text-align:left;cursor:pointer;border:3px solid var(--ink)}
+.btn:hover{background:var(--hot);color:var(--ink)}
+.btn.o{background:transparent;color:var(--ink)}
+.btn.o:hover{background:var(--ink);color:var(--paper)}
+
+.band{border-bottom:3px solid var(--ink);padding:var(--m);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 28px;font-weight:700;text-transform:uppercase;font-size:15px;background:var(--hot)}
+
+section{border-bottom:3px solid var(--ink)}
+.sh{display:grid;grid-template-columns:1fr 2fr;border-bottom:3px solid var(--ink)}
+.sh h2{padding:var(--m);font-size:clamp(2.2rem,5vw,4.2rem);border-right:3px solid var(--ink)}
+.sh p{padding:var(--m);align-self:end;max-width:56ch}
+
+/* price list */
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:14px var(--m);border-bottom:3px solid var(--ink);vertical-align:top}
+th{font:700 15px/1 var(--head);text-transform:uppercase;background:var(--ink);color:var(--paper)}
+td:first-child{font:700 clamp(1.2rem,2vw,1.6rem)/1 var(--head);text-transform:uppercase}
+td+td,th+th{border-left:3px solid var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--hot)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+caption{text-align:left;padding:10px var(--m);border-bottom:3px solid var(--ink);font-size:14px;color:var(--grey)}
+
+/* quote */
+.q{display:grid;grid-template-columns:1fr 1fr}
+.q>div{padding:var(--m)}
+.q>div+div{border-left:3px solid var(--ink);background:var(--ink);color:var(--paper)}
+.f{margin-bottom:26px}
+.f label{display:flex;justify-content:space-between;font:700 16px/1 var(--head);text-transform:uppercase;margin-bottom:10px}
+.f label b{color:var(--hot);background:var(--ink);padding:3px 8px;font-family:var(--body)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:14px;background:var(--paper);border:3px solid var(--ink);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:34px;background:var(--hot);border:3px solid var(--ink);cursor:ew-resize}
+input[type=range]::-moz-range-thumb{width:20px;height:28px;background:var(--hot);border:3px solid var(--ink);cursor:ew-resize}
+input[type=range]:focus-visible{outline:4px solid var(--hot);outline-offset:4px}
+.sel{display:flex;border:3px solid var(--ink)}
+.sel label{flex:1;margin:0;display:block}
+.sel input{position:absolute;opacity:0;pointer-events:none}
+.sel span{display:block;padding:12px;text-align:center;cursor:pointer;font:700 17px/1 var(--head);text-transform:uppercase}
+.sel label+label span{border-left:3px solid var(--ink)}
+.sel input:checked+span{background:var(--ink);color:var(--hot)}
+.sel input:focus-visible+span{outline:4px solid var(--hot);outline-offset:-4px}
+.res dl{display:grid;grid-template-columns:1fr auto;gap:10px 16px;border-bottom:3px solid var(--paper);padding-bottom:20px;margin-bottom:20px}
+.res dd{text-align:right;font-variant-numeric:tabular-nums}
+.res .big{font:700 clamp(3.4rem,8vw,6.6rem)/.9 var(--head);color:var(--hot);text-transform:uppercase}
+.res small{display:block;margin-top:14px;font-size:14px;opacity:.85;max-width:44ch}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr)}
+.how>div{padding:var(--m)}
+.how>div+div{border-left:3px solid var(--ink)}
+.how h3{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:14px}
+
+footer{display:grid;grid-template-columns:2fr 1fr 1fr}
+footer>div{padding:var(--m)}
+footer>div+div{border-left:3px solid var(--ink)}
+footer .big{font:700 clamp(2.6rem,6vw,5rem)/.9 var(--head);text-transform:uppercase}
+footer h3{font-size:18px;margin-bottom:10px}
+footer ul{list-style:none}
+footer a{text-underline-offset:4px}
+.end{border-top:3px solid var(--ink);padding:14px var(--m);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media(max-width:860px){
+  nav a:not(.hot){display:none}
+  .hero,.q,.how,footer,.sh{grid-template-columns:1fr}
+  .hero aside,.q>div+div,.how>div+div,footer>div+div{border-left:0;border-top:3px solid var(--ink)}
+  .sh h2{border-right:0;border-bottom:3px solid var(--ink)}
+  table,thead,tbody,tr,td,th{display:block}
+  thead{display:none}
+  tbody tr{border-bottom:3px solid var(--ink)}
+  tbody tr:last-child{border-bottom:0}
+  td{border-bottom:0!important;border-left:0!important;padding:6px var(--m)}
+  td:first-child{padding-top:16px}
+  td:last-child{padding-bottom:16px}
+  td[data-l]::before{content:attr(data-l) ": ";font-weight:700}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="frame">
+<header>
+  <a class="logo" href="#"><i aria-hidden="true"></i>Dhoti Press</a>
+  <nav aria-label="Main"><a href="#prices">Prices</a><a href="#quote">Quote</a><a href="#how">How</a><a class="hot" href="#quote">Get a quote</a></nav>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div><h1>Print it <b>loud.</b></h1></div>
+    <aside>
+      <p>Risograph studio in Chennai. Zines, posters, booklets and cards. From 20 copies, in one to three colours.</p>
+      <a class="btn" href="#quote">Get a quote &rarr;</a>
+      <a class="btn o" href="#prices" style="border-width:3px 0 0 0">See prices &rarr;</a>
+    </aside>
+  </div>
+  <div class="band"><span>20 copies minimum</span><span>3 day turnaround</span><span>Soy ink</span><span>Pick up in T. Nagar</span></div>
+
+  <section id="prices" aria-labelledby="h-p">
+    <div class="sh"><h2 id="h-p">Price list</h2><p>Per copy, A4 single-sided, one colour. Extra colours and double-sided are in the calculator below. Prices include paper.</p></div>
+    <table>
+      <caption>Sample prices in rupees, before GST. Minimum order 20 copies.</caption>
+      <thead><tr><th scope="col">Item</th><th scope="col">20 to 99</th><th scope="col">100 to 499</th><th scope="col">500+</th></tr></thead>
+      <tbody>
+        <tr><td>Flyer / poster</td><td class="num" data-l="20 to 99">&#8377;12</td><td class="num" data-l="100 to 499">&#8377;7</td><td class="num" data-l="500+">&#8377;4</td></tr>
+        <tr><td>Zine, per page</td><td class="num" data-l="20 to 99">&#8377;6</td><td class="num" data-l="100 to 499">&#8377;4</td><td class="num" data-l="500+">&#8377;2.50</td></tr>
+        <tr><td>Postcard</td><td class="num" data-l="20 to 99">&#8377;9</td><td class="num" data-l="100 to 499">&#8377;5</td><td class="num" data-l="500+">&#8377;3</td></tr>
+        <tr><td>Folding and stapling</td><td class="num" data-l="20 to 99">&#8377;3</td><td class="num" data-l="100 to 499">&#8377;2</td><td class="num" data-l="500+">&#8377;1.50</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="quote" aria-labelledby="h-q">
+    <div class="sh"><h2 id="h-q">Quote</h2><p>Move the sliders. This is the price we will confirm by email once we have seen your file.</p></div>
+    <div class="q">
+      <div>
+        <div class="f"><label for="pages"><span>Pages per copy</span><b id="v-pages">8</b></label><input id="pages" type="range" min="1" max="48" step="1" value="8"></div>
+        <div class="f"><label for="copies"><span>Copies</span><b id="v-copies">100</b></label><input id="copies" type="range" min="20" max="1000" step="10" value="100"></div>
+        <div class="f"><label id="l-col">Colours</label>
+          <div class="sel" role="radiogroup" aria-labelledby="l-col">
+            <label><input type="radio" name="col" value="1" checked><span>1</span></label>
+            <label><input type="radio" name="col" value="2"><span>2</span></label>
+            <label><input type="radio" name="col" value="3"><span>3</span></label>
+          </div></div>
+        <div class="f" style="margin-bottom:0"><label id="l-sd">Sides</label>
+          <div class="sel" role="radiogroup" aria-labelledby="l-sd">
+            <label><input type="radio" name="sd" value="1" checked><span>Single</span></label>
+            <label><input type="radio" name="sd" value="2"><span>Double</span></label>
+          </div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <dl>
+          <dt>Print</dt><dd id="r-print">&#8377;0</dd>
+          <dt>Finishing</dt><dd id="r-fin">&#8377;0</dd>
+          <dt>GST 18%</dt><dd id="r-gst">&#8377;0</dd>
+          <dt>Per copy</dt><dd id="r-per">&#8377;0</dd>
+        </dl>
+        <div class="big" id="r-tot">&#8377;0</div>
+        <small id="r-note">Sample prices. Final quote after we check your file.</small>
+        <a class="btn" style="margin-top:22px;background:var(--hot);color:#000;border-color:var(--hot)" href="mailto:studio@dhotipress.example?subject=Print%20quote">Email this quote &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="h-h">
+    <div class="sh"><h2 id="h-h">How</h2><p>Three steps. No account, no minimum spend beyond 20 copies.</p></div>
+    <div class="how">
+      <div><h3>Send file</h3><p>PDF, one file per colour layer, or a single file and we split it. Black and white is fine.</p></div>
+      <div><h3>We proof</h3><p>You get a photo of the first print within a day. Change anything before we run the rest.</p></div>
+      <div><h3>We run it</h3><p>Two to three days for most jobs. Ink is soy-based, paper is recycled by default.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><div class="big">Dhoti<br>Press</div></div>
+  <div><h3>Studio</h3><ul><li>22 Venkatachalam St</li><li>T. Nagar, Chennai</li><li>Tue to Sat, 10 to 6</li></ul></div>
+  <div><h3>Contact</h3><ul><li><a href="mailto:studio@dhotipress.example">studio@dhotipress.example</a></li><li><a href="#">Instagram</a></li><li><a href="#">Terms</a></li></ul></div>
+</footer>
+<div class="end"><span>&copy; 2026 Dhoti Press</span><span>Printed with soy ink on recycled paper</span></div>
+</div>
+
+<script>
+(function(){
+  var P=document.getElementById('pages'),C=document.getElementById('copies');
+  function fmt(n){return '₹'+n.toLocaleString('en-IN',{maximumFractionDigits:2,minimumFractionDigits:n%1?2:0})}
+  function rate(c){return c>=500?2.5:c>=100?4:6}
+  function run(){
+    var pg=+P.value,cp=+C.value,col=+document.querySelector('input[name=col]:checked').value,sd=+document.querySelector('input[name=sd]:checked').value;
+    var sheets=Math.ceil(pg/sd);
+    var per=rate(cp)*sheets/ (cp>=500?1:1);
+    var colMul=1+(col-1)*.7;
+    var print=per*colMul*cp;
+    var fin=(pg>2?(cp>=500?1.5:cp>=100?2:3)*cp:0);
+    var sub=print+fin,gst=sub*.18,tot=sub+gst;
+    document.getElementById('v-pages').textContent=pg;
+    document.getElementById('v-copies').textContent=cp.toLocaleString('en-IN');
+    document.getElementById('r-print').textContent=fmt(Math.round(print));
+    document.getElementById('r-fin').textContent=fmt(Math.round(fin));
+    document.getElementById('r-gst').textContent=fmt(Math.round(gst));
+    document.getElementById('r-per').textContent=fmt(Math.round(tot/cp*100)/100);
+    document.getElementById('r-tot').textContent=fmt(Math.round(tot));
+    document.getElementById('r-note').textContent=sd===2?'Double-sided: '+sheets+' sheets per copy for '+pg+' pages.':'Single-sided: one sheet per page. Double-sided can halve the sheets.';
+  }
+  [P,C].forEach(function(e){e.addEventListener('input',run)});
+  document.querySelectorAll('input[type=radio]').forEach(function(e){e.addEventListener('change',run)});
+  run();
+})();
+</script>
+</body>
+</html>

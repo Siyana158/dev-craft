@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stratum - Time-series storage you can reason about</title>
+<meta name="description" content="Stratum is an append-only time-series store with a plain SQL interface, predictable storage cost and a documented on-disk format.">
+<meta property="og:title" content="Stratum - time-series storage you can reason about">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101418'/%3E%3Cpath d='M6 11h20M6 16h20M6 21h20' stroke='%23ff6a1a' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4f6; --panel:#ffffff; --ink:#101418; --muted:#586270; --line:#cfd4db; --line-2:#e3e6ea; --sig:#b83f00; --sig-bg:#fff0e6; --code:#101418; --code-ink:#e8ecf1;
+  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --margin:clamp(16px,3vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:32px 32px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sig);outline-offset:2px}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;line-height:1.1;text-wrap:balance}
+.mono{font-family:var(--mono)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 14px;z-index:100}
+.skip:focus{left:8px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--margin)}
+
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo i{width:22px;height:22px;background:var(--ink);display:grid;gap:3px;padding:4px}
+.logo i b{display:block;height:3px;background:var(--sig)}
+nav{display:flex;align-items:center;gap:26px;font-size:15px}
+nav a.l{text-decoration:none;color:var(--muted)}nav a.l:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:500 15px/1 var(--sans);padding:12px 18px;border:1px solid var(--ink);text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--sig);border-color:var(--sig)}
+.btn.o{background:var(--panel);color:var(--ink);border-color:var(--ink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:var(--margin);padding:clamp(40px,7vw,96px) 0;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5vw,4.4rem)}
+.hero p{margin:20px 0 28px;color:var(--muted);font-size:19px;max-width:46ch}
+.hero .act{display:flex;gap:12px;flex-wrap:wrap}
+.ver{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:22px}
+.term{background:var(--code);color:var(--code-ink);font:400 14px/1.7 var(--mono);border:1px solid var(--ink);box-shadow:8px 8px 0 var(--sig)}
+.term .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #2b323b;color:#8d97a5;font-size:12.5px}
+.term pre{font:inherit;padding:18px 16px;overflow-x:auto;white-space:pre}
+.k{color:#ff9d5c}.s{color:#9bd48a}.c{color:#7d8793}.n{color:#7fb7ff}
+
+section{padding:clamp(40px,6vw,80px) 0;border-top:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:1fr 2fr;gap:var(--margin);margin-bottom:34px;align-items:end}
+.sh h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.sh p{color:var(--muted);max-width:60ch}
+.tag{font-family:var(--mono);font-size:12.5px;color:var(--sig);display:block;margin-bottom:10px}
+
+/* spec table */
+.spec{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}
+.spec th,.spec td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15.5px;vertical-align:top}
+.spec th{font-weight:500;color:var(--muted);font-family:var(--mono);font-size:13px;width:26%;background:#fafbfc}
+.spec td code,.pill{font-family:var(--mono);font-size:13.5px;background:var(--sig-bg);color:#8a3300;padding:2px 7px}
+.spec tr:last-child th,.spec tr:last-child td{border-bottom:0}
+
+/* diagram */
+.diag{background:var(--panel);border:1px solid var(--line);padding:clamp(16px,3vw,32px)}
+.diag svg{width:100%;height:auto;display:block}
+.diag text{font-family:var(--mono);font-size:13px;fill:var(--ink)}
+.diag .m{fill:var(--muted)}
+.diag rect.b{fill:#fff;stroke:var(--ink);stroke-width:1.5}
+.diag rect.h{fill:var(--sig-bg);stroke:var(--sig);stroke-width:1.5}
+.diag path{fill:none;stroke:var(--ink);stroke-width:1.5}
+
+/* calc */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--panel);border:1px solid var(--ink)}
+.calc>div{padding:clamp(20px,3vw,36px)}
+.calc>div+div{border-left:1px solid var(--ink);background:#fafbfc}
+.f{margin-bottom:28px}
+.f label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13.5px;margin-bottom:12px}
+.f label b{color:var(--sig);font-weight:500}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--ink);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:26px;background:var(--sig);border:2px solid var(--ink);cursor:ew-resize}
+input[type=range]::-moz-range-thumb{width:14px;height:22px;background:var(--sig);border:2px solid var(--ink);border-radius:0;cursor:ew-resize}
+input[type=range]:focus-visible{outline:2px solid var(--sig);outline-offset:8px}
+.out dl{display:grid;grid-template-columns:1fr auto;gap:12px 16px;font-family:var(--mono);font-size:14px}
+.out dt{color:var(--muted)}.out dd{text-align:right;font-variant-numeric:tabular-nums}
+.out .tot{border-top:1px solid var(--ink);margin-top:20px;padding-top:18px;display:flex;justify-content:space-between;align-items:baseline}
+.out .tot b{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums}
+.out small{display:block;margin-top:14px;color:var(--muted);font-size:13px;line-height:1.5}
+.bar2{height:10px;background:var(--line-2);margin-top:18px;position:relative}
+.bar2 i{position:absolute;left:0;top:0;bottom:0;background:var(--sig);width:10%;transition:width .2s}
+
+/* changelog */
+.log{background:var(--panel);border:1px solid var(--line)}
+.log li{list-style:none;display:grid;grid-template-columns:130px 90px 1fr;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px}
+.log li:last-child{border-bottom:0}
+.log .d{font-family:var(--mono);color:var(--muted);font-size:13px}
+.log .v{font-family:var(--mono);font-size:13px}
+
+footer{padding:34px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{margin-right:18px}
+
+@media(max-width:900px){
+  nav a.l{display:none}
+  .hero,.sh,.calc{grid-template-columns:1fr}
+  .calc>div+div{border-left:0;border-top:1px solid var(--ink)}
+  .log li{grid-template-columns:1fr;gap:2px}
+  .spec th{width:34%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap">
+  <a class="logo" href="#"><i aria-hidden="true"><b></b><b></b><b></b></i>Stratum</a>
+  <nav aria-label="Main"><a class="l" href="#spec">Spec</a><a class="l" href="#how">Design</a><a class="l" href="#cost">Cost</a><a class="l" href="#log">Changelog</a><a class="btn" href="#cost">Estimate cost</a></nav>
+</div></header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Storage you can reason about.</h1>
+      <p>Stratum is an append-only store with a plain SQL interface, a documented on-disk format and a storage cost you can calculate before you deploy.</p>
+      <div class="act"><a class="btn" href="#cost">Estimate your cost</a><a class="btn o" href="#spec">Read the spec</a></div>
+      <p class="ver" style="margin-bottom:0">v0.9.4 &middot; Apache-2.0 &middot; single static binary</p>
+    </div>
+    <div class="term" role="img" aria-label="Example of writing and querying data with Stratum">
+      <div class="bar"><span>stratum shell</span><span>localhost:7070</span></div>
+<pre><span class="c">-- write: one row per event, timestamps in UTC</span>
+<span class="k">INSERT INTO</span> cpu (ts, host, load)
+<span class="k">VALUES</span> (<span class="s">'2026-10-13T09:00:00Z'</span>, <span class="s">'web-3'</span>, <span class="n">0.62</span>);
+
+<span class="c">-- read: five-minute averages, last hour</span>
+<span class="k">SELECT</span> bucket(ts, <span class="s">'5m'</span>) <span class="k">AS</span> t, avg(load)
+<span class="k">FROM</span> cpu <span class="k">WHERE</span> ts &gt; now() - <span class="s">'1h'</span>
+<span class="k">GROUP BY</span> t <span class="k">ORDER BY</span> t;
+
+<span class="c">12 rows &middot; 3.1 ms &middot; 0.4 MB scanned</span></pre>
+    </div>
+  </div>
+
+  <section id="spec" aria-labelledby="h-spec">
+    <div class="sh"><div><span class="tag">01 / SPEC</span><h2 id="h-spec">What it is, exactly.</h2></div><p>No marketing words in this table. If a limit is not listed, it is not promised.</p></div>
+    <table class="spec">
+      <tbody>
+        <tr><th>Write model</th><td>Append-only. Rows are immutable once written; late data up to <code>24h</code> is accepted.</td></tr>
+        <tr><th>Query language</th><td>SQL subset: <code>SELECT</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>bucket()</code>, joins on host tags. No updates or deletes.</td></tr>
+        <tr><th>Storage format</th><td>Columnar segments, one per hour, compressed with <code>zstd</code>. Format is documented and stable across <code>0.x</code> minor versions.</td></tr>
+        <tr><th>Durability</th><td>Write-ahead log, fsync every <code>100ms</code> by default; configurable down to every write.</td></tr>
+        <tr><th>Retention</th><td>Per table, by age. Whole segments are dropped; no background compaction of old data.</td></tr>
+        <tr><th>Clustering</th><td>Not yet. One node, with hourly snapshots to object storage. Replication is on the roadmap, not in this release.</td></tr>
+        <tr><th>Footprint</th><td>Single static binary, about <code>18 MB</code>. Runs on Linux and macOS, x86-64 and ARM64.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="how" aria-labelledby="h-how">
+    <div class="sh"><div><span class="tag">02 / DESIGN</span><h2 id="h-how">One path in, one path out.</h2></div><p>Writes go to a log, then to hourly segments. Queries read only the segments and columns they need.</p></div>
+    <div class="diag">
+      <svg viewBox="0 0 960 250" role="img" aria-label="Diagram: clients write to the write-ahead log, which flushes into hourly columnar segments; queries read segments, and snapshots copy segments to object storage.">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#101418" stroke="none"/></marker></defs>
+        <rect class="b" x="10" y="95" width="150" height="60"/><text x="85" y="130" text-anchor="middle">writers</text>
+        <path d="M160 125H225" marker-end="url(#ar)"/>
+        <rect class="h" x="230" y="95" width="170" height="60"/><text x="315" y="120" text-anchor="middle">write-ahead log</text><text class="m" x="315" y="140" text-anchor="middle">fsync / 100 ms</text>
+        <path d="M400 125H465" marker-end="url(#ar)"/>
+        <rect class="b" x="470" y="95" width="190" height="60"/><text x="565" y="120" text-anchor="middle">hourly segments</text><text class="m" x="565" y="140" text-anchor="middle">columnar, zstd</text>
+        <path d="M660 125H725" marker-end="url(#ar)"/>
+        <rect class="b" x="730" y="95" width="220" height="60"/><text x="840" y="120" text-anchor="middle">object storage</text><text class="m" x="840" y="140" text-anchor="middle">hourly snapshot</text>
+        <path d="M565 95V45" marker-end="url(#ar)"/>
+        <rect class="b" x="470" y="5" width="190" height="40"/><text x="565" y="30" text-anchor="middle">SQL queries (read)</text>
+        <text class="m" x="10" y="215">append-only: nothing on this path rewrites an existing segment</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="cost" aria-labelledby="h-cost">
+    <div class="sh"><div><span class="tag">03 / COST</span><h2 id="h-cost">Calculate before you deploy.</h2></div><p>Estimates assume about 10 bytes per row after compression for numeric metrics. Your data will vary; measure a day of real traffic before you rely on this.</p></div>
+    <div class="calc">
+      <div>
+        <div class="f"><label for="rate"><span>Rows per second</span><b id="v-rate">5,000</b></label><input id="rate" type="range" min="100" max="200000" step="100" value="5000"></div>
+        <div class="f"><label for="ret"><span>Retention (days)</span><b id="v-ret">30</b></label><input id="ret" type="range" min="1" max="730" step="1" value="30"></div>
+        <div class="f"><label for="bytes"><span>Bytes per row (compressed)</span><b id="v-bytes">10</b></label><input id="bytes" type="range" min="4" max="64" step="1" value="10"></div>
+      </div>
+      <div class="out" aria-live="polite">
+        <dl>
+          <dt>Rows per day</dt><dd id="o-rows">432.0 M</dd>
+          <dt>Disk per day</dt><dd id="o-day">4.3 GB</dd>
+          <dt>Disk at full retention</dt><dd id="o-disk">129.6 GB</dd>
+          <dt>Object storage, 1 copy</dt><dd id="o-obj">129.6 GB</dd>
+        </dl>
+        <div class="tot"><span class="mono">Est. storage / month</span><b id="o-cost">$3</b></div>
+        <div class="bar2" aria-hidden="true"><i id="o-bar"></i></div>
+        <small>Priced at an illustrative $0.02 per GB-month for disk-equivalent storage. Not a quote. Compute and network are not included.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="log" aria-labelledby="h-log">
+    <div class="sh"><div><span class="tag">04 / CHANGELOG</span><h2 id="h-log">What changed lately.</h2></div><p>Every release lists format changes first.</p></div>
+    <ul class="log">
+      <li><span class="d">2026-10-02</span><span class="v">v0.9.4</span><span>Fix: segments larger than 4 GB were not dropped by retention. No format change.</span></li>
+      <li><span class="d">2026-09-15</span><span class="v">v0.9.3</span><span>Add <code class="mono">bucket()</code> support for timezone offsets. Query planner skips segments by min and max timestamp.</span></li>
+      <li><span class="d">2026-08-28</span><span class="v">v0.9.2</span><span>Snapshots can now resume after an interrupted upload. Format unchanged.</span></li>
+      <li><span class="d">2026-08-04</span><span class="v">v0.9.0</span><span>Format change: segment footer gains a checksum. Older segments are read without it; run <code class="mono">stratum verify</code> to add one.</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Stratum is an independent open-source project.</span><span><a href="#">Docs</a><a href="#">Source</a><a href="#">Security</a></span></div></footer>
+
+<script>
+(function(){
+  var R=document.getElementById('rate'),T=document.getElementById('ret'),B=document.getElementById('bytes');
+  function n(x,d){return x.toLocaleString('en-US',{maximumFractionDigits:d||0,minimumFractionDigits:d||0})}
+  function size(b){var u=['B','KB','MB','GB','TB','PB'],i=0;while(b>=1000&&i<u.length-1){b/=1000;i++}return n(b,b<10?2:b<100?1:0)+' '+u[i]}
+  function rows(x){return x>=1e9?n(x/1e9,2)+' B':x>=1e6?n(x/1e6,1)+' M':n(x)}
+  function run(){
+    var r=+R.value,d=+T.value,b=+B.value;
+    var perDay=r*86400,dayBytes=perDay*b,total=dayBytes*d,gb=total/1e9,cost=gb*0.02;
+    document.getElementById('v-rate').textContent=n(r);
+    document.getElementById('v-ret').textContent=n(d);
+    document.getElementById('v-bytes').textContent=n(b);
+    document.getElementById('o-rows').textContent=rows(perDay);
+    document.getElementById('o-day').textContent=size(dayBytes);
+    document.getElementById('o-disk').textContent=size(total);
+    document.getElementById('o-obj').textContent=size(total);
+    document.getElementById('o-cost').textContent='$'+(cost<10?n(cost,2):n(cost));
+    document.getElementById('o-bar').style.width=Math.min(100,Math.max(2,Math.log10(Math.max(gb,1))/4*100))+'%';
+  }
+  [R,T,B].forEach(function(e){e.addEventListener('input',run)});run();
+})();
+</script>
+</body>
+</html>

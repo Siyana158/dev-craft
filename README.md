@@ -36,27 +36,16 @@ Works with any agent that reads `SKILL.md` skills (see the `skills` CLI for supp
 
 Skills can run commands with your agent's permissions. Read `skills/*/SKILL.md` and the two scripts before first use.
 
-<p align="center">
-  <img src="docs/images/example-desktop.png" alt="Desktop view of the example page: a large two-line headline and a red tin-label block" width="720">
-  &nbsp;
-  <img src="docs/images/example-mobile.png" alt="Mobile view of the same page at 390 pixels wide" width="200">
-</p>
-<p align="center"><sub>Left: an editorial page, <a href="examples/kettle-and-co/index.html">examples/kettle-and-co</a>. Pages are single files; open them directly in a browser.</sub></p>
+## Examples
 
-<p align="center">
-  <img src="docs/images/kora-desktop.png" alt="A dark product landing page: gradient headline, floating navigation and an app preview" width="720">
-</p>
-<p align="center"><sub>A different direction from the same method, <a href="examples/kora/index.html">examples/kora</a>: dark product page with a live savings simulator.</sub></p>
+Seven pages, seven directions, one method. Each is a single file: open it directly in a browser. All names, prices and addresses are made up.
 
-<p align="center">
-  <img src="docs/images/thulir-desktop.png" alt="A soft light preschool landing page: rounded shapes, a drawn sprout and a friendly headline" width="720">
-</p>
-<p align="center"><sub>A third direction, <a href="examples/thulir/index.html">examples/thulir</a>: soft light, with a group finder driven by the child's age.</sub></p>
-
-<p align="center">
-  <img src="docs/images/kottai-desktop.png" alt="A quiet luxury hotel page: serif headline over a pattern of drawn Chettinad floor tiles" width="720">
-</p>
-<p align="center"><sub>A fourth direction, <a href="examples/kottai/index.html">examples/kottai</a>: quiet luxury, with a stay estimate that works out nights, room rate and tax.</sub></p>
+<table>
+<tr><td width="50%" valign="top"><a href="examples/kettle-and-co/index.html"><img src="docs/images/example-desktop.png" alt="Editorial page with a two-line headline and a red label block"></a><br><b>Kettle &amp; Co.</b><br><sub>Editorial bold, brew timer</sub></td><td width="50%" valign="top"><a href="examples/kora/index.html"><img src="docs/images/kora-desktop.png" alt="Dark product landing page with an app preview"></a><br><b>Kora</b><br><sub>Modern product (dark), savings simulator</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="examples/thulir/index.html"><img src="docs/images/thulir-desktop.png" alt="Soft light preschool page with a drawn sprout"></a><br><b>Thulir</b><br><sub>Soft light, group finder by age</sub></td><td width="50%" valign="top"><a href="examples/kottai/index.html"><img src="docs/images/kottai-desktop.png" alt="Quiet luxury hotel page over drawn floor tiles"></a><br><b>Kottai Veedu</b><br><sub>Quiet luxury, stay estimate</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="examples/stratum/index.html"><img src="docs/images/stratum-desktop.png" alt="Technical grid page with a code window and spec table"></a><br><b>Stratum</b><br><sub>Technical grid, storage cost calculator</sub></td><td width="50%" valign="top"><a href="examples/lollylab/index.html"><img src="docs/images/lollylab-desktop.png" alt="Playful page with ice lollies and chunky buttons"></a><br><b>Lolly Lab</b><br><sub>Playful, build-a-box picker</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="examples/dhotipress/index.html"><img src="docs/images/dhotipress-desktop.png" alt="Raw utilitarian page in black, white and orange"></a><br><b>Dhoti Press</b><br><sub>Raw / utilitarian, print quote calculator</sub></td><td></td></tr>
+</table>
 
 ## Why
 
