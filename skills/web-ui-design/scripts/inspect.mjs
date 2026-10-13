@@ -97,7 +97,7 @@ const MEASURE = `(() => {
   const imgs = q('img,video,picture').filter(visible);
   const bgImgs = all.filter((e) => /url\\(/.test(getComputedStyle(e).backgroundImage));
   const noAlt = q('img').filter((i) => !i.hasAttribute('alt'));
-  const smallTargets = q('a,button,input,select,textarea,[role=button]').filter(visible).filter((e) => { const r = e.getBoundingClientRect(); return (r.width < 44 || r.height < 44) && getComputedStyle(e).display !== 'inline' && e.type !== 'radio' && e.type !== 'checkbox'; }).map((e) => (e.textContent || e.name || e.tagName).trim().slice(0, 24));
+  const smallTargets = q('a,button,input,select,textarea,[role=button]').filter(visible).filter((e) => { const r = e.getBoundingClientRect(); return (r.width < 44 || r.height < 44) && getComputedStyle(e).display !== 'inline' && e.type !== 'radio' && e.type !== 'checkbox' && e.type !== 'range'; }).map((e) => (e.textContent || e.name || e.tagName).trim().slice(0, 24));
   const noLabel = q('input:not([type=hidden]):not([type=submit]):not([type=button]),select,textarea').filter((i) => !(i.labels && i.labels.length) && !i.getAttribute('aria-label') && !i.getAttribute('aria-labelledby'));
   const deadLinks = q('a[href="#"]').length;
   const outOfView = all.filter((e) => { const r = e.getBoundingClientRect(); return r.right > vw + 2 && r.width < vw * 3 && getComputedStyle(e).position !== 'fixed'; }).slice(0, 5).map((e) => e.tagName.toLowerCase() + '.' + String(e.className).slice(0, 30));
