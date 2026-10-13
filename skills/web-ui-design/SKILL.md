@@ -21,7 +21,9 @@ Proof we lack:  <what must NOT be invented>
 Stack:          <framework, styling, existing tokens>
 Brand fixed:    <colours, fonts, logo, or "none">
 Feeling:        <two or three adjectives, plus one thing it must NOT feel like>
+Direction:      <one row from references/directions.md, and one sentence on why>
 ```
+Choose the direction from the audience and subject, not from habit. Read `<skill>/references/directions.md` first: it lists seven directions with palette, type, structure and motion, and a variety guard so successive pages do not converge on the same recipe.
 Read `package.json` and the existing files first. Reuse the project's stack and components. Never import a package without checking it is installed.
 
 ## Stage 2. Specificity ledger

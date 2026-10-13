@@ -41,7 +41,12 @@ Skills can run commands with your agent's permissions. Read `skills/*/SKILL.md` 
   &nbsp;
   <img src="docs/images/example-mobile.png" alt="Mobile view of the same page at 390 pixels wide" width="200">
 </p>
-<p align="center"><sub>A page built and checked with this method: <a href="examples/kettle-and-co/index.html">examples/kettle-and-co</a>. Open it directly in a browser.</sub></p>
+<p align="center"><sub>Left: an editorial page, <a href="examples/kettle-and-co/index.html">examples/kettle-and-co</a>. Pages are single files; open them directly in a browser.</sub></p>
+
+<p align="center">
+  <img src="docs/images/kora-desktop.png" alt="A dark product landing page: gradient headline, floating navigation and an app preview" width="720">
+</p>
+<p align="center"><sub>A different direction from the same method, <a href="examples/kora/index.html">examples/kora</a>: dark product page with a live savings simulator.</sub></p>
 
 ## Why
 

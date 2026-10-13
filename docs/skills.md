@@ -17,6 +17,8 @@ Builds or polishes a page or component. Ten stages, each leaving an artifact.
 | 9. Look | written critique | Five-second, squint, swap, thumb tests, emptiness, alignment |
 | 10. Report | summary | What was measured, what is sample content, known gaps |
 
+**Directions.** The brief card includes a direction chosen from `skills/web-ui-design/references/directions.md`: editorial bold, modern product (dark), soft light, technical grid, playful, quiet luxury, raw/utilitarian. Each lists palette, type, structure and motion, plus a variety guard so consecutive pages do not repeat the same recipe.
+
 Use it for landing pages, product pages, portfolios, marketing sites, heroes and components. For dashboards keep stages 1, 3, 6, 8 and 9.
 
 ## ui-redesign
