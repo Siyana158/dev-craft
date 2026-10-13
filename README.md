@@ -17,7 +17,7 @@ plus two dependency-free scripts that check the result in a real browser.
 npx skills add Siyana158/ui-craft-skills
 ```
 
-Works with any agent that reads `SKILL.md` skills (Codex, Cursor, Gemini CLI, GitHub Copilot and the other agents supported by the `skills` CLI).
+Works with any agent that reads `SKILL.md` skills (see the `skills` CLI for supported tools).
 
 <p align="center">
   <img src="docs/images/example-desktop.png" alt="Desktop view of the example page: a large two-line headline and a red tin-label block" width="720">

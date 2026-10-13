@@ -6,7 +6,7 @@
 npx skills add Siyana158/ui-craft-skills
 ```
 
-This copies three skills into your project's `.agents/skills/` and links them for the agents you use (Codex, Cursor, Gemini CLI and others). Start a new agent session afterwards so the skills are listed.
+This copies three skills into your project's `.agents/skills/` and links them for the agents you use. Start a new agent session afterwards so the skills are listed.
 
 Skills run with your agent's permissions. Read `skills/*/SKILL.md` before relying on them.
 
