@@ -81,7 +81,7 @@ const MEASURE = `(() => {
   const bgOf = (el) => { let e = el; while (e) { const c = parseRGB(getComputedStyle(e).backgroundColor); if (c && c.a > 0.95) return c; e = e.parentElement; } return { r: 255, g: 255, b: 255, a: 1 }; };
   const lowContrast = [];
   const textEls = q('p,li,a,span,button,h1,h2,h3,h4,label,small,td,th,blockquote').filter((e) => visible(e) && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()));
-  for (const e of textEls) { const cs = getComputedStyle(e); const fg = parseRGB(cs.color); if (!fg) continue; const bg = bgOf(e);
+  for (const e of textEls) { const cs = getComputedStyle(e); const fg = parseRGB(cs.color); if (!fg || fg.a < 0.05) continue; const bg = bgOf(e);
     const a = fg.a; const mix = { r: fg.r * a + bg.r * (1 - a), g: fg.g * a + bg.g * (1 - a), b: fg.b * a + bg.b * (1 - a) };
     const l1 = lum(mix), l2 = lum(bg); const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
     const size = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight) >= 700; const need = size >= 24 || (size >= 18.66 && bold) ? 3 : 4.5;
