@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kottai Veedu - A Chettinad mansion to stay in</title>
+<meta name="description" content="Six rooms in a restored Chettinad mansion near Karaikudi. Athangudi tiles, teak pillars, a courtyard that holds the afternoon light.">
+<meta property="og:title" content="Kottai Veedu - a house that keeps time">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314110f'/%3E%3Cpath d='M8 26V14a8 8 0 0 1 16 0v12z' fill='none' stroke='%23c8aa6e' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14110f; --bg-2:#1c1815; --ink:#efe9de; --muted:#a79f92; --brass:#c8aa6e; --brass-d:#8c7440;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --margin:clamp(20px,6vw,96px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.75 var(--sans);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance;line-height:1.02}
+.skip{position:absolute;left:-999px;top:8px;background:var(--brass);color:#14110f;padding:10px 16px;z-index:100}
+.skip:focus{left:8px}
+
+header{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:28px var(--margin)}
+.logo{font-family:var(--serif);font-size:26px;letter-spacing:.02em}
+header nav{display:flex;gap:clamp(18px,3vw,42px);font-size:14.5px;letter-spacing:.06em}
+header nav a{color:var(--muted);transition:color .4s var(--ease)}
+header nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:100dvh;display:grid;place-items:center;text-align:center;padding:140px var(--margin) 100px;overflow:hidden}
+.tiles{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 50%,var(--bg) 0%,rgba(20,17,15,.88) 45%,rgba(20,17,15,.2) 100%)}
+.hero>div{position:relative;z-index:2;max-width:880px}
+.hero small{font-size:14px;letter-spacing:.2em;color:var(--brass);text-transform:uppercase}
+.hero h1{font-size:clamp(3rem,8.4vw,8rem);margin:26px 0 28px}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p{max-width:44ch;margin:0 auto;color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem)}
+.btn{display:inline-block;margin-top:44px;padding:17px 38px;border:1px solid var(--brass);color:var(--brass);font-size:14.5px;letter-spacing:.12em;text-transform:uppercase;background:none;cursor:pointer;font-family:var(--sans);font-weight:500;transition:background .5s var(--ease),color .5s var(--ease)}
+.btn:hover{background:var(--brass);color:#14110f}
+.cue{position:absolute;bottom:28px;left:50%;width:1px;height:46px;background:linear-gradient(var(--brass),transparent);z-index:2}
+
+section{padding:clamp(100px,16vw,220px) var(--margin) 0}
+.centre{text-align:center;max-width:720px;margin:0 auto}
+.centre h2{font-size:clamp(2.2rem,5vw,4.2rem)}
+.centre p{color:var(--muted);margin-top:26px}
+.arch{width:78px;margin:0 auto 34px;display:block}
+
+/* rooms */
+.rooms{display:flex;gap:clamp(18px,3vw,40px);overflow-x:auto;scroll-snap-type:x mandatory;padding:60px var(--margin) 20px;margin:0 calc(var(--margin) * -1);scrollbar-width:thin;scrollbar-color:var(--brass-d) transparent}
+.room{flex:0 0 min(78vw,420px);scroll-snap-align:center}
+.room .pic{aspect-ratio:3/4;background:var(--bg-2);display:grid;place-items:end center;overflow:hidden;position:relative}
+.room .pic svg{width:100%;height:100%;transition:transform 2s var(--ease)}
+.room:hover .pic svg{transform:scale(1.04)}
+.room h3{font-size:clamp(1.7rem,2.6vw,2.2rem);margin:22px 0 4px}
+.room .rt{display:flex;justify-content:space-between;color:var(--muted);font-size:15px}
+.room .rt b{color:var(--brass);font-weight:500}
+.hint{text-align:center;color:var(--muted);font-size:14px;margin-top:18px;letter-spacing:.06em}
+
+/* experiences */
+.xp{max-width:980px;margin:0 auto}
+.xp li{list-style:none;display:grid;grid-template-columns:1fr auto;gap:12px 40px;padding:clamp(24px,3vw,38px) 0;border-top:1px solid rgba(239,233,222,.14);align-items:baseline}
+.xp li:last-child{border-bottom:1px solid rgba(239,233,222,.14)}
+.xp h3{font-size:clamp(1.8rem,3.8vw,3.2rem);transition:color .5s var(--ease),transform .6s var(--ease)}
+.xp li:hover h3{color:var(--brass);transform:translateX(14px)}
+.xp p{grid-column:1;color:var(--muted);max-width:52ch}
+.xp span{grid-row:1;grid-column:2;color:var(--brass);font-size:14.5px;letter-spacing:.08em}
+
+/* booking */
+.book{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start}
+.book h2{font-size:clamp(2.2rem,4.6vw,3.8rem)}
+.book>div>p{color:var(--muted);margin-top:22px;max-width:36ch}
+.fld{margin-bottom:26px}
+.fld label{display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.fld select,.fld input{width:100%;background:transparent;color:var(--ink);border:0;border-bottom:1px solid rgba(239,233,222,.3);padding:10px 0;font:400 20px var(--sans);outline:none;border-radius:0;color-scheme:dark}
+.fld select option{background:#1c1815}
+.fld select:focus,.fld input:focus{border-bottom-color:var(--brass)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.sum{margin-top:6px;padding-top:24px;border-top:1px solid rgba(239,233,222,.14)}
+.sum div{display:flex;justify-content:space-between;color:var(--muted);padding:5px 0}
+.sum .tot{color:var(--ink);font-family:var(--serif);font-size:clamp(2.2rem,4vw,3rem);padding-top:18px;align-items:baseline}
+.sum .tot b{font-weight:500;color:var(--brass)}
+.sum small{display:block;color:var(--muted);font-size:13.5px;margin-top:10px;line-height:1.5}
+
+footer{padding:clamp(100px,14vw,200px) var(--margin) 48px;text-align:center;color:var(--muted);font-size:14.5px}
+footer .logo{display:block;font-size:clamp(2rem,4vw,3rem);color:var(--ink);margin-bottom:18px}
+footer p{max-width:40ch;margin:0 auto 6px}
+footer .fine{margin-top:44px;font-size:13px;letter-spacing:.06em}
+footer .fine a{margin:0 12px}
+
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease);transition-delay:calc(var(--i,0)*140ms)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  header nav a:nth-child(n+3){display:none}
+  .book{grid-template-columns:1fr}
+  .xp li{grid-template-columns:1fr}
+  .xp span{grid-row:auto;grid-column:1}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <a class="logo" href="#">Kottai Veedu</a>
+  <nav aria-label="Main"><a href="#house">The house</a><a href="#rooms">Rooms</a><a href="#days">Days</a><a href="#stay">Stay</a></nav>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <svg class="tiles" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 800 800">
+      <defs>
+        <pattern id="ath" width="160" height="160" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke="#c8aa6e" stroke-width="1.4">
+            <rect x="8" y="8" width="144" height="144"/>
+            <path d="M80 8L152 80 80 152 8 80z"/>
+            <circle cx="80" cy="80" r="38"/>
+            <circle cx="80" cy="80" r="14"/>
+            <path d="M80 42v76M42 80h76"/>
+          </g>
+          <g fill="#c8aa6e"><circle cx="8" cy="8" r="4"/><circle cx="152" cy="8" r="4"/><circle cx="8" cy="152" r="4"/><circle cx="152" cy="152" r="4"/></g>
+        </pattern>
+      </defs>
+      <rect width="800" height="800" fill="url(#ath)"/>
+    </svg>
+    <div>
+      <small class="rv">Near Karaikudi, Chettinad</small>
+      <h1 class="rv" style="--i:1">A house that <em>keeps time.</em></h1>
+      <p class="rv" style="--i:2">Six rooms in a restored Chettinad mansion. Teak pillars, Athangudi tiles, and a courtyard that holds the afternoon light.</p>
+      <a class="btn rv" style="--i:3" href="#stay">Check dates</a>
+    </div>
+    <span class="cue" aria-hidden="true"></span>
+  </div>
+
+  <section id="house" aria-labelledby="h-house">
+    <div class="centre">
+      <svg class="arch rv" viewBox="0 0 78 100" aria-hidden="true"><path d="M8 96V42a31 31 0 0 1 62 0v54z" fill="none" stroke="#c8aa6e" stroke-width="1.5"/><path d="M20 96V44a19 19 0 0 1 38 0v52" fill="none" stroke="#c8aa6e" stroke-width="1" opacity=".6"/></svg>
+      <h2 id="h-house" class="rv" style="--i:1">Built in 1912, lived in since.</h2>
+      <p class="rv" style="--i:2">Kottai Veedu was built by a family of bankers who traded across the sea. The hall, the pillars and the tiles are theirs. We restored what the years had taken and added only what a stay needs: quiet rooms, good water and a cook who knows the old recipes.</p>
+    </div>
+  </section>
+
+  <section id="rooms" aria-labelledby="h-rooms">
+    <div class="centre"><h2 id="h-rooms" class="rv">Six rooms, three ways to stay.</h2></div>
+    <div class="rooms" tabindex="0" aria-label="Rooms, scroll sideways">
+      <article class="room rv"><div class="pic"><svg viewBox="0 0 300 400" aria-hidden="true"><rect width="300" height="400" fill="#221d19"/><path d="M60 400V170a90 90 0 0 1 180 0v230z" fill="#c8aa6e" opacity=".92"/><path d="M85 400V175a65 65 0 0 1 130 0v225z" fill="#14110f"/><path d="M150 110v290" stroke="#c8aa6e" stroke-width="3"/><rect y="372" width="300" height="28" fill="#8c7440"/></svg></div><h3>Courtyard Room</h3><div class="rt"><span>King bed, opens to the courtyard</span><b>&#8377;9,500</b></div></article>
+      <article class="room rv" style="--i:1"><div class="pic"><svg viewBox="0 0 300 400" aria-hidden="true"><rect width="300" height="400" fill="#1f2421"/><path d="M40 400V180a110 110 0 0 1 220 0v220z" fill="#6d7f6a"/><path d="M70 400V185a80 80 0 0 1 160 0v215z" fill="#14110f"/><circle cx="150" cy="150" r="26" fill="#c8aa6e"/><rect y="372" width="300" height="28" fill="#4b5a49"/></svg></div><h3>Verandah Suite</h3><div class="rt"><span>Private verandah, teak swing</span><b>&#8377;14,500</b></div></article>
+      <article class="room rv" style="--i:2"><div class="pic"><svg viewBox="0 0 300 400" aria-hidden="true"><rect width="300" height="400" fill="#241c1c"/><g fill="#8a4a3b"><path d="M30 400V210a60 60 0 0 1 120 0v190z"/><path d="M150 400V210a60 60 0 0 1 120 0v190z"/></g><g fill="#14110f"><path d="M52 400V212a38 38 0 0 1 76 0v188z"/><path d="M172 400V212a38 38 0 0 1 76 0v188z"/></g><rect y="372" width="300" height="28" fill="#5c332a"/></svg></div><h3>Mansion Wing</h3><div class="rt"><span>Two rooms, sitting hall, own entrance</span><b>&#8377;21,000</b></div></article>
+    </div>
+    <p class="hint">Rates per night for two guests, before tax.</p>
+  </section>
+
+  <section id="days" aria-labelledby="h-days">
+    <div class="centre" style="margin-bottom:clamp(40px,6vw,80px)"><h2 id="h-days" class="rv">How the days go.</h2></div>
+    <ul class="xp">
+      <li class="rv"><h3>Morning in the kitchen</h3><span>7:30 a.m.</span><p>Watch the cook make appam and kuzhi paniyaram on the wood fire, then eat them in the hall.</p></li>
+      <li class="rv"><h3>The tile workshop</h3><span>11 a.m.</span><p>Visit a family in Athangudi who still pour the tiles by hand, and press one of your own.</p></li>
+      <li class="rv"><h3>Afternoon, doing nothing</h3><span>2 p.m.</span><p>The courtyard is at its best now. There is a swing, a book and no schedule.</p></li>
+      <li class="rv"><h3>Dinner on the verandah</h3><span>8 p.m.</span><p>A Chettinad menu of the season, served on banana leaf, lit by lamps.</p></li>
+    </ul>
+  </section>
+
+  <section id="stay" aria-labelledby="h-stay">
+    <div class="book">
+      <div><h2 id="h-stay" class="rv">Plan your stay.</h2><p class="rv" style="--i:1">An estimate for your dates. We confirm availability by message within a day.</p></div>
+      <form class="rv" style="--i:1" onsubmit="return false" aria-label="Stay estimate">
+        <div class="fld"><label for="room">Room</label><select id="room"><option value="9500">Courtyard Room</option><option value="14500">Verandah Suite</option><option value="21000">Mansion Wing</option></select></div>
+        <div class="two">
+          <div class="fld"><label for="in">Arrive</label><input id="in" type="date"></div>
+          <div class="fld"><label for="out">Leave</label><input id="out" type="date"></div>
+        </div>
+        <div class="sum" aria-live="polite">
+          <div><span id="s-line">3 nights</span><span id="s-sub">&#8377;0</span></div>
+          <div><span>Tax (12%)</span><span id="s-tax">&#8377;0</span></div>
+          <div class="tot"><span>Estimate</span><b id="s-tot">&#8377;0</b></div>
+          <small id="s-note">Sample rates. Meals are not included. Breakfast is served to all guests.</small>
+        </div>
+        <a class="btn" href="mailto:stay@kottaiveedu.example?subject=Stay%20enquiry">Send an enquiry</a>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="logo" href="#">Kottai Veedu</a>
+  <p>14 Pillayar Koil Street, near Karaikudi, Sivaganga district, Tamil Nadu</p>
+  <p>Reception 8 a.m. to 8 p.m.</p>
+  <p class="fine"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cancellations</a></p>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+
+  var inp=document.getElementById('in'),out=document.getElementById('out'),room=document.getElementById('room');
+  function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+  var t=new Date();t.setDate(t.getDate()+21);var u=new Date(t);u.setDate(u.getDate()+3);
+  inp.min=iso(new Date());inp.value=iso(t);out.value=iso(u);out.min=inp.value;
+  function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+  function calc(){
+    var a=new Date(inp.value),b=new Date(out.value);
+    out.min=inp.value;
+    var n=Math.round((b-a)/86400000);
+    var line=document.getElementById('s-line'),note=document.getElementById('s-note');
+    if(!(n>0)){line.textContent='Choose a leave date after arrival';['s-sub','s-tax','s-tot'].forEach(function(i){document.getElementById(i).textContent='—'});return}
+    var sub=n*(+room.value),tax=sub*.12;
+    line.textContent=n+(n===1?' night':' nights');
+    document.getElementById('s-sub').textContent=fmt(sub);
+    document.getElementById('s-tax').textContent=fmt(tax);
+    document.getElementById('s-tot').textContent=fmt(sub+tax);
+    note.textContent=n>=4?'Stays of four nights or more include a tile workshop visit.':'Sample rates. Meals are not included. Breakfast is served to all guests.';
+  }
+  [inp,out,room].forEach(function(e){e.addEventListener('input',calc)});calc();
+})();
+</script>
+</body>
+</html>

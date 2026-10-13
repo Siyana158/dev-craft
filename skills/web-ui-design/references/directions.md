@@ -21,6 +21,7 @@ Pick ONE direction per page, from the brief. State the choice and the reason in 
 | Editorial bold | `examples/kettle-and-co` |
 | Modern product (dark) | `examples/kora` |
 | Soft light | `examples/thulir` |
+| Quiet luxury | `examples/kottai` |
 
 ## Using a direction
 
