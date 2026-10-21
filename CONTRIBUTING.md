@@ -23,7 +23,16 @@ When a change affects how someone installs or uses the project, update the READM
 
 ## Local review
 
-The project has no build step or npm dependencies. Use the checks that match the files you changed:
+The project has no build step or npm dependencies. Validate the skill bundle and check the shipped scripts first:
+
+```bash
+node scripts/validate-skills.mjs
+node --check skills/web-ui-design/scripts/lint.mjs
+node --check skills/web-ui-design/scripts/inspect.mjs
+node --check skills/web-ui-design/scripts/diff.mjs
+```
+
+Then use the checks that match the files you changed:
 
 ```bash
 # Scan an example or project source for common copy and markup issues
@@ -34,6 +43,8 @@ node skills/web-ui-design/scripts/inspect.mjs examples/<example-name>/index.html
 ```
 
 `lint.mjs` needs Node 18 or newer. `inspect.mjs` needs Node 22 or newer and an installed Chrome, Edge or Chromium browser. See [the scripts reference](docs/scripts.md) for all options and rule behavior. If a check cannot run in your environment, include that fact in the change description.
+
+The pull request workflow runs the skill metadata validator and JavaScript syntax checks on Node 22 and 24. Browser inspection is a local review step because it needs a browser and screenshots should be inspected by a person.
 
 For changes to examples, open the generated screenshots at 1440, 768 and 390 CSS pixels. Check keyboard use, visible focus, reduced motion, and the example's primary interaction. Measurements support review; they do not replace looking at the page.
 
@@ -49,3 +60,7 @@ For changes to examples, open the generated screenshots at 1440, 768 and 390 CSS
 ## Pull request description
 
 Describe the problem, the change, and the checks actually performed. Link relevant files or screenshots when they help reviewers. Do not claim checks that were not run.
+
+## Report a problem or propose a skill
+
+Use the GitHub issue forms for bug reports and skill proposals. Before opening a new issue, search existing issues for the same problem. Security reports should follow [SECURITY.md](SECURITY.md) and should not be posted publicly.

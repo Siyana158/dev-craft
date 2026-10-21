@@ -4,7 +4,8 @@
 
 **A practical toolkit for building, improving and checking web interfaces.**
 
-Design and redesign methods, accessibility audits, backend guidance, Tamil typography, and a completeness guard,<br>
+Design and redesign methods, accessibility and performance audits, frontend testing, security and SEO reviews,<br>
+backend and AI chatbot guidance, Tamil typography, and a completeness guard,<br>
 plus three dependency-free scripts for source lint, browser inspection, and screenshot comparison.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -16,12 +17,12 @@ plus three dependency-free scripts for source lint, browser inspection, and scre
 ## Install
 
 ```bash
-npx skills add Siyana158/dev-craft
+npx skills add Siyana158/dev-craft --all
 ```
 
-Run it from the root of your project. It copies six skills into `.agents/skills/`, links them for the tools it detects, and records the source in `skills-lock.json`. Start a new session afterwards so the skills are listed.
+Run it from the root of your project. This installs all eleven skills into the agent directories it detects and records the source in `skills-lock.json`. Start a new session afterwards so the skills are listed. To browse the skills first, use `npx skills add Siyana158/dev-craft --list`; to install selected skills, repeat `--skill <skill-name>` for each one.
 
-The six installable skills are `web-ui-design`, `ui-redesign`, `accessibility-audit`, `indic-typography`, `complete-output`, and `backend-development`.
+The eleven installable skills are `web-ui-design`, `ui-redesign`, `accessibility-audit`, `frontend-testing`, `performance-audit`, `security-review`, `seo-audit`, `ai-chatbot-development`, `indic-typography`, `complete-output`, and `backend-development`.
 
 | You need | For |
 |---|---|
@@ -32,7 +33,7 @@ Works with any agent that reads `SKILL.md` skills (see the `skills` CLI for supp
 
 **Try it.** After installing, ask in plain language: *"build a landing page for a small bakery"*. The agent should write a brief card, a tokens file and the copy first, then build the page, then run the inspector and show screenshots.
 
-**Update or remove.** Re-run the install command to update. To remove, delete the six folders from `.agents/skills/` and the matching entries in `skills-lock.json`.
+**Update or remove.** Re-run the install command to update. To remove, delete the installed folders from your agent's skills directory and the matching entries in `skills-lock.json`.
 
 **Without the installer.** Clone the repository and run the browser checks directly from its root:
 
@@ -71,6 +72,11 @@ A page made on autopilot is the average of every page seen before. dev-craft rep
 | **`web-ui-design`** | building or polishing a page or component | Brief card, specificity ledger, tokens first, weight map, copy before markup, build, motion pass, **measure**, **look**, report |
 | **`ui-redesign`** | improving UI that already exists | Baseline screenshots, five-lens triage, change tiers from tokens up to layout, replacement guide, before/after proof |
 | **`accessibility-audit`** | reviewing an existing website or app for accessibility barriers | Evidence-based keyboard, screen reader, forms, contrast, motion and responsive findings with priorities and fixes |
+| **`frontend-testing`** | planning or improving tests for frontend behavior | Existing-stack test selection, deterministic behavior coverage, focused regression tests, and honest run reports |
+| **`performance-audit`** | diagnosing slow pages or reviewing Core Web Vitals | Measured bottleneck analysis, documented conditions, prioritized fixes, and comparable before/after results |
+| **`security-review`** | reviewing app source for security weaknesses | Scoped defensive review of trust boundaries, auth, input, data handling, dependencies, and actionable findings |
+| **`seo-audit`** | checking technical and on-page search discoverability | Crawlability, metadata, canonical URLs, structured data, content structure, and prioritized corrections |
+| **`ai-chatbot-development`** | adding AI-backed chat or model features to a backend | Provider integration, chat APIs, streaming, conversation state, tool authorization, and operational safeguards |
 | **`complete-output`** | you need full files and no shortcuts | Delivery list, banned shortcuts, close-out ledger with verified / not verified per item, clean split protocol |
 | **`indic-typography`** | Tamil or other Indic text on the page | Font stacks, line-height and spacing for Tamil, headline fitting, mixed-language rules, form fonts, and inspector checks for all of it |
 | **`backend-development`** | building or changing server-side features | Existing-stack workflow for APIs, data models, auth, security, reliability, operations and verification |
@@ -120,6 +126,11 @@ By default only objective checks run. `--strict` adds opinionated taste checks (
 - [Global workflow benchmark](benchmarks/global-use-cases/README.md): four repeatable UI and backend cases with a comparison protocol and scorecard
 - [FAQ](docs/faq.md): common problems
 - [Contributing](CONTRIBUTING.md): how to propose changes to the skills, scripts, docs and examples
+- [Releases](docs/releases.md): versioning and release steps
+- [Changelog](CHANGELOG.md): changes by release
+- [Security](SECURITY.md): report a vulnerability privately
+
+If dev-craft is useful to you, [star the repository](https://github.com/Siyana158/dev-craft). Contributions are welcome through [issues](https://github.com/Siyana158/dev-craft/issues) and pull requests.
 
 ## Design stance
 

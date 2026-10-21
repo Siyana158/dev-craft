@@ -1,0 +1,34 @@
+name: Skill proposal
+description: Suggest a focused skill or improvement to an existing workflow.
+body:
+  - type: markdown
+    attributes:
+      value: Search existing issues first. Proposals should solve a distinct, repeatable problem and fit the project's focus.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill or workflow
+      placeholder: e.g. content-design
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem it solves
+      description: Who needs this, and what work is difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Scope and boundaries
+      description: What should it cover, and how is it distinct from the current skills?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example request
+      description: Give a realistic request that should select this skill.
+    validations:
+      required: true

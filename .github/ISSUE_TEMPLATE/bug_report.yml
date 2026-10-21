@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible problem in a skill, script, example, or documentation.
+body:
+  - type: markdown
+    attributes:
+      value: Before submitting, search existing issues and remove secrets or personal data from examples.
+  - type: input
+    id: location
+    attributes:
+      label: Skill, script, or page
+      description: Include the file path or installed skill name.
+      placeholder: skills/web-ui-design/SKILL.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem and the result you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include a small example, command, or page state when possible.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Include relevant operating system, Node.js, browser, and installer versions.
+    validations:
+      required: false

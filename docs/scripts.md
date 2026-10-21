@@ -96,12 +96,6 @@ Scans `.html .css .scss .js .jsx .ts .tsx .vue .svelte .astro .mdx` files (skipp
 
 Lint matches text, so it can flag intentional uses (a gradient scrim under photo text, a decorative empty `alt`). Silence a rule with `--allow <rule>` and say why in your report.
 
-## CI example
+## Continuous integration
 
-```yaml
-- run: node .agents/skills/web-ui-design/scripts/lint.mjs src
-- run: npx --yes serve -l 4173 dist &
-- run: sleep 3 && node .agents/skills/web-ui-design/scripts/inspect.mjs http://localhost:4173
-```
-
-The CI runner needs Node 22 and a Chrome or Chromium binary (preinstalled on GitHub's `ubuntu-latest`).
+The repository workflow runs the skill metadata validator and JavaScript syntax checks. For an application that installs dev-craft, run `lint.mjs` on the relevant source and `inspect.mjs` against the running app. Browser checks need Node 22+ and an installed Chrome, Edge or Chromium. See [the workflow](../.github/workflows/quality.yml) and [contributing guide](../CONTRIBUTING.md).

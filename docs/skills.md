@@ -45,6 +45,36 @@ Audits an existing website or app for barriers affecting keyboard, screen-reader
 
 Use it for a focused accessibility review or WCAG-oriented audit. For ordinary page creation, use `web-ui-design`; for visual changes to an existing interface, use `ui-redesign` and add this audit when accessibility review is requested.
 
+## frontend-testing
+
+Plans and improves tests for user-visible frontend behavior using the project's existing framework and tools. It chooses coverage by risk, favors accessible user-facing interactions, keeps data deterministic, and reports the exact checks run and any gaps.
+
+Use it for component, integration, browser, and focused regression tests. It does not add a new framework or reorganize the suite without a clear need and authorization for that project change.
+
+## performance-audit
+
+Investigates page loading and runtime performance with available source, browser, and field measurements. It records measurement conditions, separates lab results from real-user data, connects findings to causes, and compares results after requested changes.
+
+Use it to diagnose slowness or review Core Web Vitals. It does not treat one run as a production guarantee or recommend removing essential functionality to improve a score.
+
+## security-review
+
+Reviews application source and configuration defensively for concrete weaknesses in trust boundaries, authorization, input handling, data handling, dependencies, and deployment assumptions. Findings include severity, evidence, impact, and remediation.
+
+Use it for a scoped code review. Active testing against live or third-party systems requires explicit authorization; the skill does not claim that a limited review proves an application secure.
+
+## seo-audit
+
+Reviews technical and on-page search discoverability: indexability, status codes, robots directives, canonical URLs, sitemaps, metadata, structured data, content structure, and internal links.
+
+Use it for SEO reviews of a site or selected routes. It separates observed issues from hypotheses and does not promise rankings or traffic outcomes.
+
+## ai-chatbot-development
+
+Builds AI-backed backend features such as chatbots, streaming responses, structured outputs and tool use. It checks current provider documentation, protects credentials and conversation data, validates tool actions, handles provider failures, and uses mocked responses for deterministic tests.
+
+Use it to add an AI provider to an existing app while preserving its backend stack. Provider APIs and model availability change; the skill requires checking the provider's current official documentation before implementation.
+
 ## ui-redesign
 
 Improves existing UI without changing the stack or behaviour.

@@ -13,7 +13,7 @@ Use `--allow <rule>` and state the reason. Examples: a brand logo that sits on a
 It counts real pictures and videos. A purely typographic design may be deliberate: `--allow imagery`.
 
 **Does it check backend, tests or performance?**
-No. These skills cover visual and interaction quality and content completeness. They do not review server code, write tests or profile speed.
+The web inspector focuses on rendered UI. The `backend-development`, `ai-chatbot-development`, `frontend-testing`, `performance-audit` and `security-review` skills provide separate workflows for server-side features, AI-backed chat, frontend tests, measured performance reviews and defensive security reviews.
 
 **Will it work with Tailwind, React, Vue, plain HTML?**
 Yes. The skills read your project first and use its stack; the scripts inspect the rendered page, so they are framework-agnostic.
