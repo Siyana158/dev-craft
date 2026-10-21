@@ -39,6 +39,12 @@ Designs and implements complete server-side flows in the project's existing stac
 
 Use it for APIs, background jobs, persistence and integrations. It preserves the current framework and asks only when a missing decision changes the contract, data model or access rules.
 
+## accessibility-audit
+
+Audits an existing website or app for barriers affecting keyboard, screen-reader, visual, motion and responsive access. The report gives reproducible evidence, severity, affected users and a concrete correction for each finding. It separates checks actually observed from checks that could not be performed, and does not treat automated scans as proof of conformance.
+
+Use it for a focused accessibility review or WCAG-oriented audit. For ordinary page creation, use `web-ui-design`; for visual changes to an existing interface, use `ui-redesign` and add this audit when accessibility review is requested.
+
 ## ui-redesign
 
 Improves existing UI without changing the stack or behaviour.

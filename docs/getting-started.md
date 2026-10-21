@@ -6,9 +6,9 @@
 npx skills add Siyana158/dev-craft
 ```
 
-This copies five skills into your project's `.agents/skills/` and links them for the agents you use. Start a new agent session afterwards so the skills are listed.
+This copies six skills into your project's `.agents/skills/` and links them for the agents you use. Start a new agent session afterwards so the skills are listed.
 
-The installed skills are `web-ui-design`, `ui-redesign`, `indic-typography`, `complete-output`, and `backend-development`. Each folder contains a `SKILL.md`; supporting references used by a skill live alongside it.
+The installed skills are `web-ui-design`, `ui-redesign`, `accessibility-audit`, `indic-typography`, `complete-output`, and `backend-development`. Each folder contains a `SKILL.md`; supporting references used by a skill live alongside it.
 
 Skills run with your agent's permissions. Read `skills/*/SKILL.md` before relying on them.
 
@@ -30,6 +30,7 @@ Ask your agent in plain language. The skill is chosen from its description.
 |---|---|
 | "Build a landing page for my bakery" | `web-ui-design` |
 | "This dashboard looks generic, improve it" | `ui-redesign` |
+| "Audit this checkout flow for keyboard and screen reader barriers" | `accessibility-audit` |
 | "Write the full file, no placeholders" | `complete-output` |
 | "Add an API endpoint with persisted data and access controls" | `backend-development` |
 
@@ -53,6 +54,7 @@ ui-redesign/
 indic-typography/
 complete-output/
 backend-development/
+accessibility-audit/
 ```
 
 Remove the matching entries from `skills-lock.json` if your installer created that file in the project.
