@@ -9,7 +9,7 @@ Principle: **change the lowest layer that fixes the problem.** Most visual debt 
 
 ## 1. Baseline (before touching anything)
 - Identify the stack: framework, styling approach (Tailwind v3 vs v4, CSS modules, vanilla, CSS-in-JS), where tokens live, which components are shared.
-- Run the app. Capture screenshots at 375, 768 and 1440 into `.ui-craft/before/`. If the web-ui-design skill's scripts are available, run `inspect.mjs` and `lint.mjs` and keep the output as the baseline numbers.
+- Run the app. Capture screenshots at 375, 768 and 1440 into `.dev-craft/before/`. If the web-ui-design skill's scripts are available, run `inspect.mjs` and `lint.mjs` and keep the output as the baseline numbers.
 - Note what already works. Behaviour, routes, copy and brand assets are protected unless the user says otherwise.
 
 ## 2. Triage with five lenses
@@ -66,7 +66,8 @@ Make one logical change at a time. After each tier, rebuild, run tests if presen
 - Respect an existing brand. If the brand itself uses a pattern this skill would change (gradient logo, violet accent), keep it and say so.
 
 ## 7. Verify and hand over
-- Capture `.ui-craft/after/` at the same three widths and compare with before.
+- Capture `.dev-craft/after/` at the same three widths and compare with before.
+- Generate an interactive comparison slider using `node <web-ui-design-skill>/scripts/diff.mjs --before .dev-craft/baseline --after .dev-craft/after` to inspect before/after differences side by side.
 - Rerun `inspect.mjs` and `lint.mjs` if available; report numbers before and after.
-- Check by hand: no horizontal scroll, no console errors, keyboard tab order and focus visible, primary flows still work.
+- Check by hand: no horizontal scroll, no console errors, keyboard tab order and focus visible, primary flows and component states (loading, empty, error) still work.
 - Write `REDESIGN.md` (or reply in chat) with: what changed per tier, what was deliberately left, risks, and anything unverified. Do not claim a check that was not run.

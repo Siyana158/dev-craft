@@ -6,7 +6,7 @@ Builds or polishes a page or component. Ten stages, each leaving an artifact.
 
 | Stage | Artifact | Purpose |
 |---|---|---|
-| 1. Brief card | 10-line card | Audience, the one action, proof available and missing, stack, brand, feeling |
+| 1. Brief card | 10-line card | Audience, the one action, proof available and missing, stack, brand, feeling, design direction and three calibrated dials |
 | 2. Specificity ledger | 5 facts | Things true of this subject and no competitor; they feed the headline, hero and later sections |
 | 3. Tokens file | `tokens.css` or theme | Colour roles, type scale, spacing, radius, easing; components use tokens only |
 | 4. Weight map | one line per section | The dominant element of each screen and its job; neighbouring sections differ |
@@ -17,9 +17,27 @@ Builds or polishes a page or component. Ten stages, each leaving an artifact.
 | 9. Look | written critique | Five-second, squint, swap, thumb tests, emptiness, alignment |
 | 10. Report | summary | What was measured, what is sample content, known gaps |
 
-**Directions.** The brief card includes a direction chosen from `skills/web-ui-design/references/directions.md`: editorial bold, modern product (dark), soft light, technical grid, playful, quiet luxury, raw/utilitarian. Each lists palette, type, structure and motion, plus a variety guard so consecutive pages do not repeat the same recipe.
+**References and guides:**
+- `skills/web-ui-design/references/directions.md`: Seven design recipes (editorial bold, modern product, soft light, technical grid, playful, quiet luxury, raw/utilitarian) with variety guards.
+- `skills/web-ui-design/references/token-adapters.md`: Mappings for Tailwind CSS v4 `@theme`, Tailwind v3, Shadcn/Radix variables, and DTCG JSON tokens.
+- `skills/web-ui-design/references/textures-and-patterns.md`: Procedural SVG grain/noise, architectural grids, dot matrices, and organic mesh gradients for when real photos are not yet available.
+- `skills/web-ui-design/references/component-states.md`: Complete states matrix (resting, hover, active, focus-visible, disabled, skeleton loading, empty, error/offline).
 
 Use it for landing pages, product pages, portfolios, marketing sites, heroes and components. For dashboards keep stages 1, 3, 6, 8 and 9.
+
+## backend-development
+
+Designs and implements complete server-side flows in the project's existing stack.
+
+1. **Scope:** identify callers, required flows, owned data, integrations and constraints.
+2. **Map:** inspect routes, models, migrations, auth, configuration and checks already in the repo.
+3. **Contract and data:** define API behavior, validation, persistence constraints, migrations and transaction boundaries.
+4. **Implement:** build each vertical request-to-storage path, including errors, retries and integration timeouts.
+5. **Secure:** enforce authentication and per-resource authorization; protect inputs, credentials, personal data and outbound requests.
+6. **Verify:** run focused unit, integration and request checks, plus the project's available static checks.
+7. **Operate:** review safe configuration, logs, health, migration rollout and documentation; report known limits.
+
+Use it for APIs, background jobs, persistence and integrations. It preserves the current framework and asks only when a missing decision changes the contract, data model or access rules.
 
 ## ui-redesign
 
@@ -36,7 +54,7 @@ Improves existing UI without changing the stack or behaviour.
 | 2 | Markup | medium |
 | 3 | Layout (confirm with the user first) | higher |
 
-4. **Verify:** after screenshots, rerun the scripts, hand-check keyboard and primary flows, write `REDESIGN.md`.
+4. **Verify:** after screenshots, rerun the scripts, launch the interactive visual diff slider (`diff.mjs`), hand-check keyboard and primary flows, write `REDESIGN.md`.
 
 ## complete-output
 

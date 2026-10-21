@@ -14,6 +14,18 @@ Pick ONE direction per page, from the brief. State the choice and the reason in 
 | **Quiet luxury** | hospitality, jewellery, architecture, boutique services | Deep neutral or paper tone, a refined serif with a restrained sans, thin spacing | Wide margins, slow full-bleed imagery, small centred text, very few elements per screen | Slow fades, long durations |
 | **Raw / utilitarian** | studios, zines, activism, indie tools | Black, white, one harsh colour; system-like or condensed type | Rigid grid, visible borders, plain lists, no decoration | None or abrupt |
 
+## Design dials
+
+Record three values from 1 to 10 in the brief card. They tune the chosen direction; they do not replace it. If the brief gives no preference, infer values from the audience, content, brand and existing product, then note the reason. Around 5 is a balanced starting point.
+
+| Dial | 1 | 10 | What it changes |
+|---|---|---|---|
+| **Variance** | Familiar, restrained composition | Unusual, expressive composition | Layout asymmetry, scale contrast, and how boldly sections differ. Keep the page usable and the chosen direction recognizable. |
+| **Motion** | Static, with essential control feedback | Rich, expressive movement | Amount and prominence of optional transitions and entrances. Keep movement purposeful; respect reduced-motion preferences at every setting. |
+| **Density** | Spacious, few items per screen | Compact, many items per screen | Content grouping, whitespace, and information per viewport. Preserve readable type, touch targets, and clear hierarchy. |
+
+Do not raise a dial just to make a page feel more designed. Subject matter and user needs decide the result; accessibility, performance, and existing brand requirements always win.
+
 ## Worked examples in this repo
 
 | Direction | Example |

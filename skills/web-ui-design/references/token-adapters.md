@@ -1,6 +1,6 @@
 # Token Adapters: Framework Integrations
 
-ui-craft designs begin with a tokens pass (Stage 3). Rather than hardcoding colors or arbitrary pixels in component markup, use these adapter recipes to project ui-craft tokens into whichever CSS framework or UI library the project uses.
+dev-craft designs begin with a tokens pass (Stage 3). Rather than hardcoding colors or arbitrary pixels in component markup, use these adapter recipes to project dev-craft tokens into whichever CSS framework or UI library the project uses.
 
 ---
 
@@ -131,7 +131,7 @@ module.exports = {
 
 ## 4. Shadcn UI / Radix Themes Adapter
 
-Map ui-craft tokens directly to the CSS variable conventions expected by Shadcn UI:
+Map dev-craft tokens directly to the CSS variable conventions expected by Shadcn UI:
 
 ```css
 :root {

@@ -7,7 +7,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
 const EXT = new Set(['.html', '.htm', '.css', '.scss', '.js', '.jsx', '.ts', '.tsx', '.vue', '.svelte', '.astro', '.mdx']);
-const SKIP = new Set(['node_modules', '.git', 'dist', 'build', '.next', '.ui-craft', '.agents']);
+const SKIP = new Set(['node_modules', '.git', 'dist', 'build', '.next', '.dev-craft', '.agents']);
 
 const RULES = [
   { id: 'lorem', level: 'ERROR', re: /lorem ipsum|dolor sit amet/i, msg: 'placeholder Latin text' },

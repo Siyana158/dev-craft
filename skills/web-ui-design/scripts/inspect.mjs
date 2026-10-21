@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // inspect.mjs - open a page in a real browser at three widths, measure it against
-// the ui-craft house rules, save screenshots. No dependencies (Node 22+ and an
+// the dev-craft house rules, save screenshots. No dependencies (Node 22+ and an
 // installed Chrome, Edge or Chromium).
 //
 // Usage: node inspect.mjs <url | path/to/index.html> [--out dir] [--allow rule,rule] [--strict]
@@ -17,7 +17,7 @@ import { HEALTH_MEASURE, healthRules, keyboardTest, keyboardRules, reducedMotion
 const args = process.argv.slice(2);
 const target = args.find((a) => !a.startsWith('--'));
 const flag = (n, d) => { const i = args.indexOf(`--${n}`); return i > -1 ? args[i + 1] : d; };
-const outDir = resolve(flag('out', '.ui-craft/inspect'));
+const outDir = resolve(flag('out', '.dev-craft/inspect'));
 const strict = args.includes('--strict');
 const quick = args.includes('--quick');
 const allow = new Set((flag('allow', '') || '').split(',').filter(Boolean));
@@ -45,7 +45,7 @@ if (!browserPath) { console.error('No Chrome/Edge/Chromium found. Set CHROME_PAT
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const port = 9300 + Math.floor(Math.random() * 500);
-const profile = mkdtempSync(join(tmpdir(), 'ui-craft-'));
+const profile = mkdtempSync(join(tmpdir(), 'dev-craft-'));
 const proc = spawn(browserPath, [
   '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
   '--no-first-run', '--no-default-browser-check', '--disable-gpu', '--hide-scrollbars', 'about:blank',
@@ -113,7 +113,7 @@ const MEASURE = `(() => {
   walkDepth(document.documentElement, 1);
   const heavySvgs = q('svg').filter((s) => (s.outerHTML || '').length > 50000).length;
   const oversizedImgs = q('img').filter(visible).filter((i) => i.naturalWidth > 1200 && i.clientWidth > 0 && i.naturalWidth > i.clientWidth * 3).length;
-  const clsScore = window.__uiCraftCls || 0;
+  const clsScore = window.__devCraftCls || 0;
 
   return {
     vw, scrollW: document.documentElement.scrollWidth, docH: document.documentElement.scrollHeight,
@@ -146,7 +146,7 @@ try {
     await S('Page.navigate', { url });
     await sleep(1800);
     // setup CLS tracking before scrolling
-    await S('Runtime.evaluate', { expression: `window.__uiCraftCls = 0; try { const po = new PerformanceObserver((l) => { for (const e of l.getEntries()) { if (!e.hadRecentInput) window.__uiCraftCls += e.value; } }); po.observe({ type: 'layout-shift', buffered: true }); } catch {}` });
+    await S('Runtime.evaluate', { expression: `window.__devCraftCls = 0; try { const po = new PerformanceObserver((l) => { for (const e of l.getEntries()) { if (!e.hadRecentInput) window.__devCraftCls += e.value; } }); po.observe({ type: 'layout-shift', buffered: true }); } catch {}` });
     // scroll through so IntersectionObserver reveals fire, then back to top
     await S('Runtime.evaluate', { expression: `(async()=>{document.documentElement.style.scrollBehavior='auto';const h=document.documentElement.scrollHeight;for(let y=0;y<h;y+=innerHeight*0.7){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);await new Promise(r=>setTimeout(r,900));})()`, awaitPromise: true });
     const { result } = await S('Runtime.evaluate', { expression: MEASURE, returnByValue: true });

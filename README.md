@@ -1,11 +1,11 @@
 <div align="center">
 
-# ui-craft
+# dev-craft
 
-**Agent skills that make web UI decided, complete and measured.**
+**A practical toolkit for building, improving and checking web interfaces.**
 
-A design method, a redesign method for existing projects, and a completeness guard,<br>
-plus two dependency-free scripts that check the result in a real browser.
+Design and redesign methods, backend guidance, Tamil typography, and a completeness guard,<br>
+plus three dependency-free scripts for source lint, browser inspection, and screenshot comparison.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node 22+](https://img.shields.io/badge/node-22%2B-brightgreen.svg)
@@ -16,10 +16,12 @@ plus two dependency-free scripts that check the result in a real browser.
 ## Install
 
 ```bash
-npx skills add Siyana158/ui-craft-skills
+npx skills add Siyana158/dev-craft
 ```
 
-Run it from the root of your project. It copies four skills into `.agents/skills/`, links them for the tools it detects, and records the source in `skills-lock.json`. Start a new session afterwards so the skills are listed.
+Run it from the root of your project. It copies five skills into `.agents/skills/`, links them for the tools it detects, and records the source in `skills-lock.json`. Start a new session afterwards so the skills are listed.
+
+The five installable skills are `web-ui-design`, `ui-redesign`, `indic-typography`, `complete-output`, and `backend-development`.
 
 | You need | For |
 |---|---|
@@ -30,9 +32,18 @@ Works with any agent that reads `SKILL.md` skills (see the `skills` CLI for supp
 
 **Try it.** After installing, ask in plain language: *"build a landing page for a small bakery"*. The agent should write a brief card, a tokens file and the copy first, then build the page, then run the inspector and show screenshots.
 
-**Update or remove.** Re-run the install command to update. To remove, delete the four folders from `.agents/skills/` and the matching entries in `skills-lock.json`.
+**Update or remove.** Re-run the install command to update. To remove, delete the five folders from `.agents/skills/` and the matching entries in `skills-lock.json`.
 
-**Without the installer.** Copy `skills/*` into your tool's skills folder by hand, or clone the repo and run the scripts directly.
+**Without the installer.** Clone the repository and run the browser checks directly from its root:
+
+```bash
+git clone https://github.com/Siyana158/dev-craft.git
+cd dev-craft
+node skills/web-ui-design/scripts/lint.mjs ../your-project/src
+node skills/web-ui-design/scripts/inspect.mjs ../your-project/index.html
+```
+
+To use a skill manually, copy its complete folder (including any `references/` it contains) into the skills directory your tool reads. Each skill folder has its own `SKILL.md` with the full workflow.
 
 Skills can run commands with your agent's permissions. Read `skills/*/SKILL.md` and the two scripts before first use.
 
@@ -49,7 +60,7 @@ Eight pages: seven directions and a Tamil version, one method. Each is a single 
 
 ## Why
 
-A page made on autopilot is the average of every page seen before. ui-craft replaces that with a short chain where each stage leaves something you can point at, and where the result is measured in a browser instead of assumed.
+A page made on autopilot is the average of every page seen before. dev-craft replaces that with a short chain where each stage leaves something you can point at, and where the result is measured in a browser instead of assumed.
 
 **brief → tokens → weight map → copy → build → measure → look → report**
 
@@ -61,6 +72,7 @@ A page made on autopilot is the average of every page seen before. ui-craft repl
 | **`ui-redesign`** | improving UI that already exists | Baseline screenshots, five-lens triage, change tiers from tokens up to layout, replacement guide, before/after proof |
 | **`complete-output`** | you need full files and no shortcuts | Delivery list, banned shortcuts, close-out ledger with verified / not verified per item, clean split protocol |
 | **`indic-typography`** | Tamil or other Indic text on the page | Font stacks, line-height and spacing for Tamil, headline fitting, mixed-language rules, form fonts, and inspector checks for all of it |
+| **`backend-development`** | building or changing server-side features | Existing-stack workflow for APIs, data models, auth, security, reliability, operations and verification |
 
 Ask in plain language ("build a landing page for my bakery", "this dashboard looks generic, fix it", "write the whole file, no placeholders") and the matching skill is picked up from its description.
 
@@ -77,16 +89,16 @@ node skills/web-ui-design/scripts/inspect.mjs ./index.html
 node skills/web-ui-design/scripts/inspect.mjs http://localhost:3000 --strict
 
 # compare before/after screenshots with an interactive split slider, side-by-side and blend views
-node skills/web-ui-design/scripts/diff.mjs --before .ui-craft/baseline --after .ui-craft/inspect
+node skills/web-ui-design/scripts/diff.mjs --before .dev-craft/baseline --after .dev-craft/inspect
 ```
 
 Sample output:
 
 ```text
 fonts loaded: Bricolage Grotesque
-screenshot: .ui-craft/inspect/1440.png
-screenshot: .ui-craft/inspect/768.png
-screenshot: .ui-craft/inspect/390.png
+screenshot: .dev-craft/inspect/1440.png
+screenshot: .dev-craft/inspect/768.png
+screenshot: .dev-craft/inspect/390.png
 WARN [imagery] 0 real pictures/videos on the page; strong pages usually carry 4 or more (1440px)
 WARN [tap-targets] targets under 44px: Kettle & Co., Shop (390px)
 
@@ -95,7 +107,7 @@ WARN [tap-targets] targets under 44px: Kettle & Co., Shop (390px)
 
 `inspect.mjs` checks, per viewport: horizontal overflow, headline line counts, WCAG AA contrast, font families actually loaded, missing form labels and alt text, tap targets, `h1` / title / lang / description, focus styles, reduced-motion handling, DOM tree depth & node counts, layout shift (CLS), number of real pictures, number of animated elements. It exits `1` on any `FAIL`.
 
-By default only objective checks run. `--strict` adds opinionated taste checks (monospace, tiny tracked caps, gradients, resting shadows). `--allow rule,rule` silences a rule you accept. `diff.mjs` outputs an interactive `.ui-craft/diff.html` viewer.
+By default only objective checks run. `--strict` adds opinionated taste checks (monospace, tiny tracked caps, gradients, resting shadows). `--allow rule,rule` silences a rule you accept. `diff.mjs` outputs an interactive `.dev-craft/diff.html` viewer.
 
 ## Documentation
 
@@ -104,7 +116,9 @@ By default only objective checks run. `--strict` adds opinionated taste checks (
 - [Scripts reference](docs/scripts.md): every rule, exit codes, CI example
 - [Health checks](docs/health-checks.md): layout, accessibility, keyboard and reduced-motion checks
 - [Indic typography](docs/indic-typography.md): Tamil and other Indic text
+- [Global workflow benchmark](benchmarks/global-use-cases/README.md): four repeatable UI and backend cases with a comparison protocol and scorecard
 - [FAQ](docs/faq.md): common problems
+- [Contributing](CONTRIBUTING.md): how to propose changes to the skills, scripts, docs and examples
 
 ## Design stance
 
@@ -115,7 +129,7 @@ By default only objective checks run. `--strict` adds opinionated taste checks (
 
 ## Credits
 
-Skills for design quality have been explored by others, notably [taste-skill](https://github.com/Leonxlnx/taste-skill). ui-craft is an independent work with its own structure, text and scripts; no text or code was copied from it.
+Skills for design quality have been explored by others, notably [taste-skill](https://github.com/Leonxlnx/taste-skill). dev-craft is an independent work with its own structure, text and scripts; no text or code was copied from it.
 
 ## License
 

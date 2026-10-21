@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// diff.mjs - visual regression and side-by-side comparison tool for ui-craft.
-// Compares before/after screenshots (from .ui-craft/baseline and .ui-craft/inspect,
+// diff.mjs - visual regression and side-by-side comparison tool for dev-craft.
+// Compares before/after screenshots (from .dev-craft/baseline and .dev-craft/inspect,
 // or custom directories) and generates an interactive diff.html with split slider,
 // side-by-side, and difference blend modes. Zero dependencies.
 //
 // Usage: node diff.mjs [--before dir] [--after dir] [--out file.html]
-// Example: node diff.mjs --before .ui-craft/baseline --after .ui-craft/inspect
+// Example: node diff.mjs --before .dev-craft/baseline --after .dev-craft/inspect
 
 import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, join, basename } from 'node:path';
@@ -15,9 +15,9 @@ const args = process.argv.slice(2);
 const flag = (n, d) => { const i = args.indexOf(`--${n}`); return i > -1 && args[i + 1] ? args[i + 1] : d; };
 
 const positional = args.filter((a) => !a.startsWith('--'));
-const beforeDir = resolve(flag('before', positional[0] || '.ui-craft/baseline'));
-const afterDir = resolve(flag('after', positional[1] || '.ui-craft/inspect'));
-const outFile = resolve(flag('out', '.ui-craft/diff.html'));
+const beforeDir = resolve(flag('before', positional[0] || '.dev-craft/baseline'));
+const afterDir = resolve(flag('after', positional[1] || '.dev-craft/inspect'));
+const outFile = resolve(flag('out', '.dev-craft/diff.html'));
 
 if (!existsSync(beforeDir)) {
   console.error(`Before directory not found: ${beforeDir}`);
@@ -64,7 +64,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ui-craft Visual Diff</title>
+  <title>dev-craft Visual Diff</title>
   <style>
     :root {
       --bg: #0f1117;
@@ -295,7 +295,7 @@ const html = `<!DOCTYPE html>
 <body>
   <header>
     <div class="brand">
-      <span class="badge">ui-craft</span>
+      <span class="badge">dev-craft</span>
       <h1 class="title">Visual Regression Diff</h1>
     </div>
 

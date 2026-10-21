@@ -22,8 +22,9 @@ Stack:          <framework, styling, existing tokens>
 Brand fixed:    <colours, fonts, logo, or "none">
 Feeling:        <two or three adjectives, plus one thing it must NOT feel like>
 Direction:      <one row from references/directions.md, and one sentence on why>
+Design dials:   <variance 1-10; motion 1-10; density 1-10, with a short reason>
 ```
-Choose the direction from the audience and subject, not from habit. Read `<skill>/references/directions.md` first: it lists seven directions with palette, type, structure and motion, and a variety guard so successive pages do not converge on the same recipe.
+Choose the direction from the audience and subject, not from habit. Read `<skill>/references/directions.md` first: it lists seven directions with palette, type, structure and motion, and a variety guard so successive pages do not converge on the same recipe. Set the three dials using `<skill>/references/directions.md`; infer sensible values from the brief when the user has no preference, and record the reason. Existing brand rules, accessibility and the page's purpose take priority over any dial.
 Read `package.json` and the existing files first. Reuse the project's stack and components. Never import a package without checking it is installed.
 
 ## Stage 2. Specificity ledger
@@ -35,7 +36,9 @@ Create the tokens before any component, as CSS custom properties in one place (`
 - **Type:** one family is the default, two the maximum. A scale of at most six steps. Fluid `clamp()` for display sizes. Body 16-20px, line-height 1.45-1.6, 45-75 characters per line.
 - **Space:** a 4/8px scale. One content width, one page margin.
 - **Shape and motion:** one radius family, one easing curve, two durations.
+- Apply the density dial to content width, spacing, and how much information shares a screen. Apply the variance dial to composition and type scale; keep the chosen direction recognizable. Apply the motion dial to the amount and distance of movement, never to whether controls provide feedback.
 Downstream code references tokens only; no raw hex or pixel values in components.
+For framework-specific configurations (Tailwind CSS v4 `@theme`, Tailwind v3 config, Shadcn/Radix variables, DTCG JSON), refer to `<skill>/references/token-adapters.md`.
 
 ## Stage 4. Weight map
 For each section, write one line: **what is the dominant element, and what is its job?** One dominant element per screen; everything else supports it. Sketch the section order from the proof you have, one claim per section, and delete sections with no claim.
@@ -54,20 +57,21 @@ Write the full text in a plain file first.
 Order: hero at desktop and phone width -> sections in sequence -> imagery -> interactive element -> states.
 - Mobile-first. The phone layout is its own composition, not a squeezed desktop one.
 - Use `min-height: 100dvh` for full-height sections, CSS grid for structure, `text-wrap: balance` on headings.
-- **Imagery order of preference:** the project's own -> generated, if a tool exists -> credited open-licence pictures that honestly depict the subject's world -> illustration drawn in code from the subject -> type and colour alone. Never present a found picture as the client's own product, room or team. Never use placeholder boxes or fake product shots.
+- **Imagery order of preference:** the project's own -> generated, if a tool exists -> credited open-licence pictures that honestly depict the subject's world -> illustration drawn in code from the subject -> procedural textures, grain & geometric SVG patterns (see `<skill>/references/textures-and-patterns.md`) -> type and colour alone. Never present a found picture as the client's own product, room or team. Never use placeholder boxes or fake product shots.
 - **One interactive element** tied to the subject (a configurator, calculator, timer, live status). It needs real content, a thumb-sized layout and a no-script fallback.
-- Interactive controls get hover, pressed, `:focus-visible`, disabled. Data views get loading, empty and error states.
+- **Full component state coverage:** resting, hover, pressed, `:focus-visible`, disabled. Data containers must handle loading (layout-preserving skeleton), empty (zero-data with action), and error/offline states. See `<skill>/references/component-states.md`.
 - Semantic landmarks, one `h1`, labelled inputs, alt text, a skip link, a favicon, title, description and social meta.
 
 ## Stage 7. Motion pass
-Only after the page stands without it. Entrances staggered by section part (heading, text, media), triggered once with `IntersectionObserver`, rising 16-32px with opacity, and content must remain visible if script fails. Feedback on every control. Animate `transform` and `opacity` only. Use a custom curve, never `linear`. Provide a `prefers-reduced-motion` fallback that keeps content and removes travel.
+Only after the page stands without it. Use the motion dial to choose restrained feedback or richer entrances; even high motion must remain purposeful and avoid competing with reading. Entrances may stagger by section part (heading, text, media), triggered once with `IntersectionObserver`, rising 16-32px with opacity, and content must remain visible if script fails. Feedback on every control. Animate `transform` and `opacity` only. Use a custom curve, never `linear`. Provide a `prefers-reduced-motion` fallback that keeps content and removes travel.
 
 ## Stage 8. Measure
 ```bash
 node <skill>/scripts/lint.mjs <folder-or-files>
 node <skill>/scripts/inspect.mjs <url-or-index.html>
+node <skill>/scripts/diff.mjs --before .dev-craft/baseline --after .dev-craft/inspect
 ```
-`lint.mjs` scans source for placeholder text, cliche copy, dead links, missing alt, viewport-unit and easing mistakes. `inspect.mjs` opens the page in a real browser at 1440, 768 and 390px and reports headline line counts, overflow, contrast, font families actually loaded, missing labels, small tap targets, metadata, imagery count and motion count, and saves full-page screenshots to `.ui-craft/inspect/`. Fix every `FAIL`. Treat each `WARN` as a defect unless you can defend it in one sentence. Add `--strict` for opinionated taste checks (monospace, tiny tracked caps, gradients, resting shadows). Needs Node 22+ and any installed Chrome, Edge or Chromium; nothing to install.
+`lint.mjs` scans source for placeholder text, cliche copy, dead links, missing alt, viewport-unit and easing mistakes. `inspect.mjs` opens the page in a real browser at 1440, 768 and 390px and reports headline line counts, overflow, contrast, font families actually loaded, missing labels, small tap targets, metadata, imagery count, DOM tree complexity, layout shift (CLS), and saves full-page screenshots to `.dev-craft/inspect/`. Fix every `FAIL`. Treat each `WARN` as a defect unless you can defend it in one sentence. Add `--strict` for opinionated taste checks. For visual regression against a baseline, `diff.mjs` generates an interactive slider report at `.dev-craft/diff.html`. Needs Node 22+ and any installed Chrome, Edge or Chromium; nothing to install.
 
 ## Stage 9. Look
 The measurements say what is measurable, not what is good. Open the screenshots and answer, in writing:

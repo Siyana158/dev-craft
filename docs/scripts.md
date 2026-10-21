@@ -8,7 +8,7 @@ Both scripts live in `skills/web-ui-design/scripts/` (after install: `.agents/sk
 node inspect.mjs <url | path/to/index.html> [--out dir] [--allow rule,rule] [--strict]
 ```
 
-Starts a headless browser, opens the page at **1440, 768 and 390 px**, scrolls through it so scroll-triggered content appears, measures it, and saves full-page screenshots to `--out` (default `.ui-craft/inspect/`).
+Starts a headless browser, opens the page at **1440, 768 and 390 px**, scrolls through it so scroll-triggered content appears, measures it, and saves full-page screenshots to `--out` (default `.dev-craft/inspect/`).
 
 Exit codes: `0` no FAIL, `1` at least one FAIL, `2` the tool could not run (no Node 22, no browser, page failed).
 
@@ -34,6 +34,11 @@ Exit codes: `0` no FAIL, `1` at least one FAIL, `2` the tool could not run (no N
 | `imagery` | WARN | Fewer than 4 real pictures or videos |
 | `motion` | WARN | Fewer than 8 elements with transitions or animations |
 | `length` | WARN | Page unusually tall |
+| `dom-nodes` | WARN | More than 1500 DOM elements |
+| `dom-depth` | WARN | DOM tree nesting depth exceeds 32 levels |
+| `layout-shift` | WARN | Cumulative layout shift (CLS) exceeds 0.1 |
+| `heavy-svg` | WARN | Inline `<svg>` exceeds 50KB |
+| `oversized-images` | WARN | Image served at >3x displayed resolution |
 
 ### Checks with `--strict`
 
@@ -44,6 +49,22 @@ Opinionated taste checks, all warnings: `mono` (monospace outside code), `tiny-c
 - The `imagery` and `motion` rules are prompts to look closer, not proof of a problem; use `--allow imagery` for a page that is deliberately typographic.
 - Contrast is estimated from computed colours and the nearest opaque background; text over images is not evaluated.
 - Passing the inspector does not mean the page is good. Open the screenshots.
+
+## diff.mjs
+
+```bash
+node diff.mjs [--before dir] [--after dir] [--out file.html]
+```
+
+Generates a standalone, interactive visual regression HTML report comparing screenshots from `--before` (default `.dev-craft/baseline`) and `--after` (default `.dev-craft/inspect`).
+
+Features:
+- **Breakpoint switcher:** Switch between 1440px Desktop, 768px Tablet, and 390px Mobile views.
+- **Split Slider:** Draggable divider bar revealing baseline on one side and redesign on the other.
+- **Side-by-side mode:** Synchronized columns for direct side-by-side comparison.
+- **Difference Overlay:** Inverted blend mode highlighting modified pixels.
+- Saves self-contained output to `--out` (default `.dev-craft/diff.html`).
+
 
 ## lint.mjs
 
