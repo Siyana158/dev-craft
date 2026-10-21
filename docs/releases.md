@@ -8,7 +8,7 @@ Use a version tag in the form `vMAJOR.MINOR.PATCH`.
 
 ## Prepare a release
 
-1. Confirm the intended changes are merged to `main` and the `Quality` workflow passes.
+1. Confirm the intended changes are merged to `main` and run the checks listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
 2. Move the relevant entries from `Unreleased` in [CHANGELOG.md](../CHANGELOG.md) into a new version section with the release date. Keep `Unreleased` ready for future changes.
 3. Check that README install instructions and the skill list match the repository.
 4. Create and push an annotated tag, replacing the example version:

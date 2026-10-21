@@ -44,7 +44,7 @@ node skills/web-ui-design/scripts/inspect.mjs examples/<example-name>/index.html
 
 `lint.mjs` needs Node 18 or newer. `inspect.mjs` needs Node 22 or newer and an installed Chrome, Edge or Chromium browser. See [the scripts reference](docs/scripts.md) for all options and rule behavior. If a check cannot run in your environment, include that fact in the change description.
 
-The pull request workflow runs the skill metadata validator and JavaScript syntax checks on Node 22 and 24. Browser inspection is a local review step because it needs a browser and screenshots should be inspected by a person.
+The skill metadata validator and JavaScript syntax checks are the repository's baseline checks. Browser inspection is a local review step because it needs a browser and screenshots should be inspected by a person.
 
 For changes to examples, open the generated screenshots at 1440, 768 and 390 CSS pixels. Check keyboard use, visible focus, reduced motion, and the example's primary interaction. Measurements support review; they do not replace looking at the page.
 

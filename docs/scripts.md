@@ -98,4 +98,4 @@ Lint matches text, so it can flag intentional uses (a gradient scrim under photo
 
 ## Continuous integration
 
-The repository workflow runs the skill metadata validator and JavaScript syntax checks. For an application that installs dev-craft, run `lint.mjs` on the relevant source and `inspect.mjs` against the running app. Browser checks need Node 22+ and an installed Chrome, Edge or Chromium. See [the workflow](../.github/workflows/quality.yml) and [contributing guide](../CONTRIBUTING.md).
+For local source checks, run the skill metadata validator and JavaScript syntax checks listed in the [contributing guide](../CONTRIBUTING.md). For an application that installs dev-craft, run `lint.mjs` on the relevant source and `inspect.mjs` against the running app. Browser checks need Node 22+ and an installed Chrome, Edge or Chromium.
