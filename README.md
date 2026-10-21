@@ -139,10 +139,6 @@ If dev-craft is useful to you, [star the repository](https://github.com/Siyana15
 - Measurements are necessary, never sufficient: looking at the screenshots is a required stage.
 - No invented proof: no fake customers, quotes, press or statistics.
 
-## Credits
-
-Skills for design quality have been explored by others, notably [taste-skill](https://github.com/Leonxlnx/taste-skill). dev-craft is an independent work with its own structure, text and scripts; no text or code was copied from it.
-
 ## License
 
 [MIT](LICENSE)
